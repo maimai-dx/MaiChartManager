@@ -30,7 +30,7 @@ export default defineComponent({
     return () => <>
       <NBadge dot show={!!badgeType.value && !disableBadge.value} type={badgeType.value as any}>
         <NButton secondary onClick={() => showConfigurator.value = true}>
-          Mod 管理
+          Mod Management
         </NButton>
       </NBadge>
       <ModNotInstalledWarning show={showWarning.value} closeModal={(dismiss: boolean) => {

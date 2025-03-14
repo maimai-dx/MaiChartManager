@@ -10,12 +10,12 @@ export default defineComponent({
     const show = ref(false);
 
     return () => <NButton secondary onClick={() => show.value = true}>
-      检查冲突
+        Check Conflicts
 
       <NModal
         preset="card"
         class="w-[min(60vw,60em)]"
-        title="资源冲突检查"
+        title="Resource Conflict Check"
         v-model:show={show.value}
       >
         <CheckContent dir={props.dir}/>

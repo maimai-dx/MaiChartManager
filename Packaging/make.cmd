@@ -12,6 +12,7 @@ call pnpm build
 popd
 
 pushd ..
+dotnet restore -r win-x64 -p:SelfContained=true -p:PublishReadyToRun=true
 msbuild /p:Configuration=Release /p:DeployOnBuild=true /p:PublishProfile=FolderProfile
 popd
 
@@ -21,7 +22,7 @@ pushd Pack
 
 del .\priconfig.xml
 del .\*.pri
-makepri.exe createconfig /cf priconfig.xml /dq zh-CN
+makepri.exe createconfig /cf priconfig.xml /dq en-US
 makepri.exe new /pr . /cf .\priconfig.xml
 del .\priconfig.xml
 makeappx pack /d . /p ../Store64.appx

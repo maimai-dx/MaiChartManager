@@ -26,31 +26,31 @@ export default defineComponent({
 
     const options = computed(() => [
       {
-        label: () => <a href={getUrl(`ExportOptApi/${selectedADir.value}/${selectMusicId.value}`)} download={`${selectMusicId.value} - ${selectedMusic.value?.name}.zip`}>导出 Zip</a>,
+        label: () => <a href={getUrl(`ExportOptApi/${selectedADir.value}/${selectMusicId.value}`)} download={`${selectMusicId.value} - ${selectedMusic.value?.name}.zip`}>Export Zip</a>,
         key: DROPDOWN_OPTIONS.exportZip,
       },
       {
-        label: '导出为 Maidata',
+        label: "Export as Maidata",
         key: DROPDOWN_OPTIONS.exportMaidata,
       },
       {
-        label: () => <a href={getUrl(`ExportAsMaidataApi/${selectedADir.value}/${selectMusicId.value}`)} download={`${selectMusicId.value} - ${selectedMusic.value?.name} - Maidata.zip`}>导出 Zip (Maidata)</a>,
+        label: () => <a href={getUrl(`ExportAsMaidataApi/${selectedADir.value}/${selectMusicId.value}`)} download={`${selectMusicId.value} - ${selectedMusic.value?.name} - Maidata.zip`}>Export Zip (Maidata)</a>,
         key: DROPDOWN_OPTIONS.exportMaiDataZip,
       },
       {
-        label: '导出为 Maidata（无 BGA）',
+        label: "Export as Maidata (No BGA)",
         key: DROPDOWN_OPTIONS.exportMaidataIgnoreVideo,
       },
       {
-        label: () => <a href={getUrl(`ExportAsMaidataApi/${selectedADir.value}/${selectMusicId.value}?ignoreVideo=true`)} download={`${selectMusicId.value} - ${selectedMusic.value?.name} - Maidata.zip`}>导出 Zip (Maidata，无 BGA)</a>,
+        label: () => <a href={getUrl(`ExportAsMaidataApi/${selectedADir.value}/${selectMusicId.value}?ignoreVideo=true`)} download={`${selectMusicId.value} - ${selectedMusic.value?.name} - Maidata.zip`}>Export Zip (Maidata, No BGA)</a>
         key: DROPDOWN_OPTIONS.exportMaiDataZipIgnoreVideo,
       },
       ...(selectedADir.value === 'A000' ? [] : [{
-        label: '修改 ID',
+        label: 'Modify ID',
         key: DROPDOWN_OPTIONS.changeId,
       }]),
       {
-        label: '在资源管理器中显示',
+        label: "Show in Explorer",
         key: DROPDOWN_OPTIONS.showExplorer,
       }
     ])
@@ -77,7 +77,7 @@ export default defineComponent({
     const copy = async (type: DROPDOWN_OPTIONS) => {
       wait.value = true;
       if (location.hostname !== 'mcm.invalid' || type === DROPDOWN_OPTIONS.exportMaidata || type === DROPDOWN_OPTIONS.exportMaidataIgnoreVideo) {
-        // 浏览器模式，使用 zip.js 获取并解压
+        // Browser mode, use zip.js to fetch and decompress
         let folderHandle: FileSystemDirectoryHandle;
         try {
           folderHandle = await window.showDirectoryPicker({
@@ -106,16 +106,16 @@ export default defineComponent({
             const writable = await fileHandle.createWritable();
             await entry.getData!(writable);
           }
-          message.success('成功');
+          message.success("Successful");
         } catch (e) {
-          globalCapture(e, "导出歌曲失败（远程）")
+          globalCapture(e, "Failed to export song (remote)");
         } finally {
           wait.value = false;
         }
         return;
       }
       try {
-        // 本地 webview 打开，使用本地模式
+        // Opened locally in WebView, using local mode
         await api.RequestCopyTo({
           music: [{id: selectMusicId.value, assetDir: selectedADir.value}],
           removeEvents: false,
@@ -128,7 +128,7 @@ export default defineComponent({
     return () =>
       <NButtonGroup>
         <NButton secondary onClick={() => copy(DROPDOWN_OPTIONS.export)} loading={wait.value}>
-          复制到...
+          Copy to...
         </NButton>
         <NDropdown options={options.value} trigger="click" placement="bottom-end" onSelect={handleOptionClick}>
           <NButton secondary class="px-.5 b-l b-l-solid b-l-[rgba(255,255,255,0.5)]">

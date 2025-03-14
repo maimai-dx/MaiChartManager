@@ -34,7 +34,7 @@ export default defineComponent({
           startIn: 'downloads',
           types: [
             {
-              description: "支持的文件类型",
+              description: "Supported file types",
               accept: {
                 "application/x-supported": [".mp3", ".wav", ".ogg", ".acb"],
               },
@@ -53,7 +53,7 @@ export default defineComponent({
             startIn: 'downloads',
             types: [
               {
-                description: "支持的文件类型",
+                description: "Supported file types",
                 accept: {
                   "application/x-supported": [".awb"],
                 },
@@ -78,7 +78,7 @@ export default defineComponent({
         }
         if (res.error) {
           const error = res.error as any;
-          dialog.warning({title: '设置失败', content: error.message || error});
+          dialog.warning({title: 'Setting failed', content: error.message || error});
           return;
         }
         updateTime.value = Date.now()
@@ -86,7 +86,7 @@ export default defineComponent({
       } catch (e: any) {
         if (e.name === 'AbortError') return
         console.log(e)
-        globalCapture(e, "导入音频出错")
+        globalCapture(e, "Error importing audio")
       } finally {
         tipShow.value = false;
         tipSelectAwbShow.value = false;
@@ -97,13 +97,13 @@ export default defineComponent({
 
     return () => <NFlex align="center">
       {props.song.isAcbAwbExist && <audio controls src={url.value} class="w-0 grow"/>}
-      {selectedADir.value !== 'A000' && <NButton secondary class={`${!props.song.isAcbAwbExist && "w-full"}`} onClick={uploadFlow} loading={load.value}>{props.song.isAcbAwbExist ? '替换' : '设置'}音频</NButton>}
+      {selectedADir.value !== 'A000' && <NButton secondary class={`${!props.song.isAcbAwbExist && "w-full"}`} onClick={uploadFlow} loading={load.value}>{props.song.isAcbAwbExist ? 'Replace' : 'Set'} Audio</NButton>}
       {selectedADir.value !== 'A000' && props.song.isAcbAwbExist && <AudioPreviewEditorButton/>}
       {selectedADir.value !== 'A000' && props.song.isAcbAwbExist && <SetMovieButton song={props.song}/>}
 
-      {/* 打开文件对话框一般在左上角，所以在下边显示一个 Drawer */}
+      {/* The file dialog usually pops up in the top-left corner, so we show a Drawer below */}
       <NDrawer v-model:show={tipShow.value} height={200} placement="bottom">
-        <NDrawerContent title="可以选择的文件类型">
+        <NDrawerContent title="File types you can select from">
           <div class="grid cols-4 justify-items-center text-8em gap-10">
             <FileTypeIcon type="WAV"/>
             <FileTypeIcon type="MP3"/>
@@ -113,20 +113,20 @@ export default defineComponent({
         </NDrawerContent>
       </NDrawer>
       <NDrawer v-model:show={tipSelectAwbShow.value} width={500} placement="right">
-        <NDrawerContent title="请选择对应的 AWB 文件"/>
+        <NDrawerContent title="Please select the corresponding AWB file"/>
       </NDrawer>
       <NModal
         preset="card"
         class="w-[min(30vw,25em)]"
-        title="设置偏移（秒）"
+        title="Set offset (seconds)"
         v-model:show={setOffsetShow.value}
       >{{
         default: () => <NFlex vertical size="large">
-          <div>设为正数可以在歌曲前面添加空白，设为负数则裁掉歌曲前面的一部分</div>
+          <div>Setting a positive value adds silence to the beginning of the song, setting a negative value removes part of the beginning.</div>
           <NInputNumber v-model:value={offset.value} class="w-full" step={0.01}/>
         </NFlex>,
         footer: () => <NFlex justify="end">
-          <NButton onClick={okResolve.value as any}>确定</NButton>
+          <NButton onClick={okResolve.value as any}>Confirm</NButton>
         </NFlex>
       }}</NModal>
     </NFlex>

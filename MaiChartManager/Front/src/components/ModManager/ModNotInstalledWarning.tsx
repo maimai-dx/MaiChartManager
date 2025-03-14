@@ -14,12 +14,12 @@ export default defineComponent({
     return () => <NModal
       preset="card"
       class="w-[min(35vw,45em)]"
-      title="没有安装 AquaMai"
+      title="AquaMai Not Installed"
       v-model:show={show.value}
     >{{
-      default: () => '没有安装 MelonLoader 或者 AquaMai，在游戏中将无法加载歌曲封面。请点击 Mod 管理来安装',
+      default: () => "MelonLoader or AquaMai is not installed, so the game will be unable to load song covers. Please click Mod Management to install it.",
       footer: () => <NFlex justify="end">
-        <NButton onClick={() => props.closeModal(true)}>不再提示</NButton>
+        <NButton onClick={() => props.closeModal(true)}>Don't show again</NButton>
       </NFlex>
     }}</NModal>;
   }

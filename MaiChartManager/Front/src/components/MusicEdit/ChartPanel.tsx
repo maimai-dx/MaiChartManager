@@ -42,22 +42,22 @@ export default defineComponent({
         <NFlex align="center" class="absolute right-0 top-0 m-xy mt-2 z-2">
           <PreviewChartButton songId={props.songId} level={props.chartIndex}/>
         </NFlex>
-        <NFormItem label="启用" labelPlacement="left" class="ml-2px">
+        <NFormItem label="Enable" labelPlacement="left" class="ml-2px">
           <NFlex align="center">
             <NSwitch v-model:value={props.chart.enable}/>
             <ProblemsDisplay problems={props.chart.problems!}/>
           </NFlex>
         </NFormItem>
-        <NFormItem label="作者">
+        <NFormItem label="Author">
           <NInput v-model:value={props.chart.designer} placeholder=""/>
         </NFormItem>
-        <NFormItem label="显示等级">
+        <NFormItem label="Display Level">
           <NSelect options={LEVELS_OPTIONS as any} v-model:value={props.chart.levelId}/>
         </NFormItem>
-        <NFormItem label="定数">
+        <NFormItem label="Constant">
           <NInputNumber showButton={false} class="w-full" precision={1} v-model:value={levelValue.value} min={0}/>
         </NFormItem>
-        <NFormItem label="音符数量">
+        <NFormItem label="Note Count">
           <NInputNumber showButton={false} class="w-full" precision={0} v-model:value={props.chart.maxNotes} min={0}/>
         </NFormItem>
       </NFlex>

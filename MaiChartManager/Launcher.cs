@@ -1,4 +1,4 @@
-﻿using System.Net;
+using System.Net;
 using System.Net.Sockets;
 using System.Text.Json;
 using System.Text.RegularExpressions;
@@ -17,7 +17,7 @@ public partial class Launcher : Form
         InitializeComponent();
         label3.Text = $@"v{Application.ProductVersion}";
 # if CRACK
-        label3.Text += " 此版本不可流通";
+        label3.Text += " This version is not for circulation";
 # endif
         checkBox1.Checked = StaticSettings.Config.Export;
         textBox1.Text = StaticSettings.Config.GamePath;
@@ -40,7 +40,7 @@ public partial class Launcher : Form
             return;
         }
 
-        // 开机自启
+        // Start automatically on system boot
         Visible = false;
         notifyIcon1.Visible = true;
         checkBox1.Checked = true;
@@ -107,9 +107,9 @@ public partial class Launcher : Form
 
     private void StartClicked(object sender, EventArgs e)
     {
-        if (button2.Text == "停止")
+        if (button2.Text == "Stop")
         {
-            button2.Text = "启动";
+            button2.Text = "Start";
             textBox1.Enabled = true;
             button1.Enabled = true;
             checkBox1.Enabled = true;
@@ -124,19 +124,19 @@ public partial class Launcher : Form
         if (string.IsNullOrWhiteSpace(textBox1.Text)) return;
         if (!Path.Exists(textBox1.Text))
         {
-            MessageBox.Show("选择的路径不存在！");
+            MessageBox.Show("The selected path does not exist!");
             return;
         }
 
         StaticSettings.GamePath = textBox1.Text;
         if (ContainsSpecialCharacters(StaticSettings.GamePath))
         {
-            MessageBox.Show("警告：路径中包含特殊字符或中文，可能会导致 MelonLoader 之类的工具出现兼容性问题，请将目录移动至英文路径！", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            MessageBox.Show("Warning: The path contains special characters or Chinese, which may cause compatibility issues with tools like MelonLoader. Please move the directory to an English path!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         if (!Path.Exists(StaticSettings.StreamingAssets))
         {
-            MessageBox.Show("选择的路径中看起来不包含游戏文件，请选择 Sinmai.exe 所在的文件夹");
+            MessageBox.Show("It appears the selected path does not contain game files. Please select the folder where Sinmai.exe is located.");
             return;
         }
 
@@ -160,7 +160,7 @@ public partial class Launcher : Form
         checkBoxLanAuth.Enabled = false;
         textBoxLanAuthUser.Enabled = false;
         textBoxLanAuthPass.Enabled = false;
-        button2.Text = "停止";
+        button2.Text = "Stop";
 
         ServerManager.StartApp(checkBox1.Checked, () =>
         {
@@ -171,7 +171,7 @@ public partial class Launcher : Form
 
             loopbackUrl = serverAddressesFeature.Addresses.First();
 
-            // 本地模式
+            // Local mode
             if (checkBox1.Checked) return;
             Invoke(() => label1_LinkClicked(null, null));
             Dispose();
@@ -249,17 +249,17 @@ public partial class Launcher : Form
         if ((ModifierKeys & Keys.Shift) != Keys.Shift) return;
         if (IapManager.License == IapManager.LicenseStatus.Active) return;
 
-        var input = Interaction.InputBox("请输入激活码", "离线激活");
+        var input = Interaction.InputBox("Please enter the activation code", "Offline Activation");
         if (string.IsNullOrWhiteSpace(input)) return;
 
         var verify = await OfflineReg.VerifyAsync(input);
         if (!verify.IsValid)
         {
-            MessageBox.Show("激活码无效");
+            MessageBox.Show("Invalid activation code");
             return;
         }
 
-        MessageBox.Show("赞助版功能已激活，谢谢你");
+        MessageBox.Show("Sponsor version features have been activated, thank you");
 
         StaticSettings.Config.OfflineKey = input;
         await SaveConfigFileAsync();

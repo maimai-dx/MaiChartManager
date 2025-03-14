@@ -33,20 +33,20 @@ export default defineComponent({
       if (musicList.value.find(it => it.id === id.value)) {
         const choice = await awaitDialog({
           type: 'warning',
-          title: 'ID 已存在',
-          content: '要覆盖吗？',
-          positiveText: '覆盖',
-          negativeText: '取消',
+          title: 'ID already exists',
+          content: 'Do you want to overwrite?',
+          positiveText: 'Overwrite',
+          negativeText: 'Cancel',
         });
         if (!choice) return;
       }
       if (Math.floor(id.value / 1e4) !== Math.floor(selectMusicId.value / 1e4)) {
         const choice = await awaitDialog({
           type: 'warning',
-          title: '继续的话可能会改变乐曲属性',
-          content: '比如说 DX 和标准乐谱、宴会场之类。要继续吗？',
-          positiveText: '继续',
-          negativeText: '取消',
+          title: 'Continuing may alter the song attributes',
+          content: 'For example, it might affect whether it is a DX chart or a standard chart, or party mode, etc. Do you still want to continue?',
+          positiveText: 'Continue',
+          negativeText: 'Cancel',
         });
         if (!choice) return;
       }
@@ -57,7 +57,7 @@ export default defineComponent({
         selectMusicId.value = id.value;
         show.value = false;
       } catch (e) {
-        globalCapture(e, '修改 ID 时出现错误');
+        globalCapture(e, 'An error occurred while modifying the ID');
       } finally {
         loading.value = false;
       }
@@ -66,12 +66,12 @@ export default defineComponent({
     return () => <NModal
       preset="card"
       class="w-[min(30vw,25em)]"
-      title="更改 ID"
+      title="Change ID"
       v-model:show={show.value}
     >{{
       default: () => <NForm label-placement="left" labelWidth="5em" showFeedback={false} disabled={loading.value}>
         <NFlex vertical size="large">
-          <NFormItem label="新的 ID">
+          <NFormItem label="New ID">
             <NFlex align="center" wrap={false}>
               <NInputNumber v-model:value={id.value} class="w-full" min={1} max={999999}/>
               <MusicIdConflictNotifier id={id.value}/>
@@ -80,7 +80,7 @@ export default defineComponent({
         </NFlex>
       </NForm>,
       footer: () => <NFlex justify="end">
-        <NButton onClick={save} disabled={id.value === selectMusicId.value} loading={loading.value}>确定</NButton>
+        <NButton onClick={save} disabled={id.value === selectMusicId.value} loading={loading.value}>Confirm</NButton>
       </NFlex>
     }}</NModal>;
   }

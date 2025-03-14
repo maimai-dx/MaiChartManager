@@ -1,6 +1,6 @@
 import { defineComponent, PropType, ref, watch } from "vue";
 import UnityWebgl from "unity-webgl";
-// 神奇，ASP.NET 放一个 .data 的文件在 wwwroot 里，就会 404。其他后缀就没有问题
+// Interestingly, placing a .data file in ASP.NET's wwwroot results in a 404 error, while other file extensions do not have this issue
 import dataUrl from '@/assets/majdata-wasm/Build.bin?url';
 import frameworkUrl from '@/assets/majdata-wasm/Build.framework.js?url';
 import codeUrl from '@/assets/majdata-wasm/Build.wasm?url';
@@ -32,15 +32,15 @@ export default defineComponent({
     })
 
     return () => <NButton secondary onClick={() => show.value = true}>
-      预览谱面
+      Preview Chart
       <NModal
         preset="card"
         class="w-60vw"
-        title="谱面预览"
+        title="Chart Preview"
         v-model:show={show.value}
       >
         <NFlex vertical>
-          谱面预览不代表上机效果，请以实际为准
+          The chart preview does not represent the in-game experience, please consider the actual version as final.
           <UnityVue unity={unityContext} height="32vw"/>
         </NFlex>
       </NModal>

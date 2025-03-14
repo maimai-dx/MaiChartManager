@@ -19,7 +19,7 @@ export default defineComponent({
       const res = await api.DeleteMusic(selectMusicId.value, selectedADir.value);
       if (res.error) {
         const error = res.error as any;
-        dialog.warning({title: '删除失败', content: error.message || error});
+        dialog.warning({title: 'Deletion Failed', content: error.message || error});
         return;
       }
       selectMusicId.value = 0;
@@ -30,7 +30,7 @@ export default defineComponent({
     return () => <NButton secondary onClick={del} loading={deleteLoading.value} type={deleteConfirm.value ? 'error' : 'default'}
       // @ts-ignore
                           onMouseleave={() => deleteConfirm.value = false}>
-      {deleteConfirm.value ? '确认' : '删除'}
+      {deleteConfirm.value ? 'Confirm' : 'Delete'}
     </NButton>;
   }
 });

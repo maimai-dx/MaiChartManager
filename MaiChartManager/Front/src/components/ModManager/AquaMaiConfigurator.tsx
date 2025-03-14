@@ -53,9 +53,9 @@ const ConfigEntry = defineComponent({
               case 'AquaMai.Config.Types.KeyCodeOrName':
                 return <NSelect v-model:value={props.entryState.value} options={Object.entries(KeyCodeName).map(([label, value]) => ({ label, value }))}/>;
             }
-            return `不支持的类型: ${props.entry.fieldType}`;
+            return `Unsupported type: ${props.entry.fieldType}`;
           })()}
-          {comments.shouldEnableOptions[props.entry.path!] && !props.entryState.value && <ProblemsDisplay problems={['需要开启此选项']}/>}
+          {comments.shouldEnableOptions[props.entry.path!] && !props.entryState.value && <ProblemsDisplay problems={['This option needs to be enabled']}/>}
         </NFlex>
         {comments.commentOverrides[props.entry.path!] || props.entry.attribute?.comment?.commentZh}
       </NFlex>
@@ -80,7 +80,7 @@ const ConfigSection = defineComponent({
         <NFlex vertical class="w-full ws-pre-line">
           <NFlex class="h-34px" align="center">
             <NSwitch v-model:value={props.sectionState.enabled}/>
-            {comments.shouldEnableOptions[props.section.path!] && !props.sectionState.enabled && <ProblemsDisplay problems={['需要开启此选项']}/>}
+            {comments.shouldEnableOptions[props.section.path!] && !props.sectionState.enabled && <ProblemsDisplay problems={['This option needs to be enabled']}/>}
           </NFlex>
           {comments.commentOverrides[props.section.path!] || props.section.attribute?.comment?.commentZh}
         </NFlex>
@@ -143,13 +143,13 @@ export default defineComponent({
     return () => <div class="grid cols-[14em_auto]">
       <NAnchor type="block" offsetTarget="#scroll">
         {bigSections.value.map((key) => <NAnchorLink key={key} title={key} href={`#${key}`}/>)}
-        {otherSection.value.length > 0 && <NAnchorLink key="其他" title="其他" href="#其他"/>}
+        {otherSection.value.length > 0 && <NAnchorLink key="others" title="Others" href="#others"/>}
       </NAnchor>
       <NScrollbar class="h-75vh p-2 relative"
         // @ts-ignore
                   id="scroll"
       >
-        <NInput v-model:value={search.value} placeholder="搜索" size="small" clearable class="sticky top-0 z-200" ref={searchRef}/>
+        <NInput v-model:value={search.value} placeholder="Search" size="small" clearable class="sticky top-0 z-200" ref={searchRef}/>
         {bigSections.value.map((big) => <div id={big} key={big}>
           <NDivider titlePlacement="left" class="mt-2!">{big}</NDivider>
           {filteredSections.value?.filter(it => {
@@ -167,10 +167,10 @@ export default defineComponent({
           })}
         </div>)}
         {otherSection.value.length > 0 &&
-          <div id={"其他"}>
-            <NDivider titlePlacement="left" class="mt-2!">其他</NDivider>
+          <div id="others">
+            <NDivider titlePlacement="left" class="mt-2!">Others</NDivider>
             {otherSection.value.map((section) =>
-              <ConfigSection key="其他" section={section}
+              <ConfigSection key="others" section={section}
                              entryStates={props.config.entryStates!}
                              sectionState={props.config.sectionStates![section.path!]}/>)}
           </div>}

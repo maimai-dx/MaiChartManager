@@ -9,7 +9,7 @@ enum OPTION {
 }
 
 const options = [
-  {label: "创建乐曲", key: OPTION.CreateMusic},
+  {label: "Create Music", key: OPTION.CreateMusic},
 ]
 
 export default defineComponent({

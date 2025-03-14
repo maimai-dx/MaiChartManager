@@ -21,11 +21,11 @@ export default defineComponent({
 
     return () =>
       modInfo.value?.isHidConflictExist ? <NFlex align="center" class="m-l-35 translate-y--3">
-          <span class="c-orange">检测到冲突的 Mod</span>
-          <NButton secondary onClick={del} loading={load.value}>一键删除</NButton>
+          <span class="c-orange">Detected a conflicting Mod</span>
+          <NButton secondary onClick={del} loading={load.value}>One-click Delete</NButton>
         </NFlex>
         : <NFlex align="center" class="m-l-35 translate-y--3">
-          <span class="c-green-6">没有检测到冲突</span>
+          <span class="c-green-6">No conflicts detected</span>
         </NFlex>
   },
 });

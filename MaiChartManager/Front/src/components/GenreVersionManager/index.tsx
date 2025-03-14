@@ -12,20 +12,20 @@ export enum EDIT_TYPE {
 }
 
 const options = [
-  {label: "流派管理", key: EDIT_TYPE.Genre},
-  {label: "版本管理", key: EDIT_TYPE.Version},
-]
+  { label: "Genre Management", key: EDIT_TYPE.Genre },
+  { label: "Version Management", key: EDIT_TYPE.Version },
+];
 
 export default defineComponent({
   setup(props) {
     const show = ref(EDIT_TYPE.None);
     const showBuiltIn = useStorage('showBuiltInGenre', true);
-    const text = computed(() => show.value === EDIT_TYPE.Genre ? '流派' : '版本');
+    const text = computed(() => show.value === EDIT_TYPE.Genre ? 'Genre' : 'Version');
     const editingId = ref(-1);
 
     const list = computed(() => {
       const data = show.value === EDIT_TYPE.Genre ? genreList : addVersionList;
-      return showBuiltIn.value ? data.value : data.value.filter(it => it.assetDir !== 'A000');
+      return showBuiltIn.value ? data.value : data.value.filter((it) => it.assetDir !== "A000");
     });
 
     const handleSelect = (key: EDIT_TYPE) => {
@@ -35,19 +35,19 @@ export default defineComponent({
     return () => (
       <NDropdown options={options} trigger="click" onSelect={handleSelect} placement="bottom-end">
         <NButton secondary class="pr-1">
-          分类管理
-          <span class="i-mdi-arrow-down-drop text-6 translate-y-.25"/>
+          Category Management
+          <span class="i-mdi-arrow-down-drop text-6 translate-y-.25" />
 
           <NModal
             preset="card"
             class="w-[min(70vw,80em)]"
-            title={`${text.value}管理`}
+            title={`${text.value} Management`}
             show={show.value !== EDIT_TYPE.None}
             onUpdateShow={() => show.value = EDIT_TYPE.None}
           >
             <NFlex vertical>
               <NFlex align="center">
-                <NCheckbox v-model:checked={showBuiltIn.value}>显示内置</NCheckbox>
+                <NCheckbox v-model:checked={showBuiltIn.value}>Show Built-In</NCheckbox>
                 <CreateButton setEditId={id => editingId.value = id} type={show.value}/>
               </NFlex>
               <NScrollbar class="h-80vh">

@@ -6,11 +6,11 @@ import { globalCapture } from "@/store/refs";
 
 const columns: DataTableColumns<CheckConflictEntry> = [
   {type: 'selection'},
-  {title: '歌曲 ID', key: 'musicId'},
-  {title: '歌曲名称', key: 'musicName'},
-  {title: '被覆盖的资源', key: 'lowerDir'},
-  {title: '覆盖的资源', key: 'upperDir'},
-  {title: '文件名', key: 'fileName'},
+  {title: 'Song ID', key: 'musicId'},
+  {title: 'Song Name', key: 'musicName'},
+  {title: 'Overwritten Resource', key: 'lowerDir'},
+  {title: 'Overwriting Resource', key: 'upperDir'},
+  {title: 'File Name', key: 'fileName'},
 ]
 
 export default defineComponent({
@@ -29,7 +29,7 @@ export default defineComponent({
         data.value = req.data.map((it, idx) => ({...it, key: idx}));
         load.value = false;
       } catch (e) {
-        globalCapture(e, '检查冲突时出错');
+        globalCapture(e, "Error checking for conflicts");
       }
     }
 
@@ -46,13 +46,13 @@ export default defineComponent({
         selectedIds.value = [];
         await api.DeleteAssets(req);
       } catch (e) {
-        globalCapture(e, '删除冲突资源时出错');
+        globalCapture(e, "Error deleting conflicting resources");
       }
       update();
     }
 
     return () => <NFlex size="large">
-      <NButton onClick={requestDelete} disabled={!selectedIds.value.length}>删除选中</NButton>
+      <NButton onClick={requestDelete} disabled={!selectedIds.value.length}>Delete Selected</NButton>
       <NDataTable
         columns={columns}
         data={data.value}
@@ -60,7 +60,7 @@ export default defineComponent({
         loading={load.value}
         max-height="70vh"
       >{{
-        empty: () => <div class="c-neutral">没有冲突资源</div>,
+        empty: () => <div class="c-neutral">No conflicting resources</div>,
       }}</NDataTable>
     </NFlex>;
   }

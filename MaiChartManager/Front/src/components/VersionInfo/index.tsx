@@ -17,7 +17,7 @@ export default defineComponent({
       <NModal
         preset="card"
         class="w-[min(45vw,60em)]"
-        title="关于"
+        title="About"
         v-model:show={show.value}
       >
         <NFlex vertical class="text-4" size="large">
@@ -33,36 +33,36 @@ export default defineComponent({
             </NPopover>
           </div>
           <div>
-            版本: {version.value.version}
+            Version: {version.value.version}
           </div>
           <div>
-            游戏版本: 1.{version.value.gameVersion}
+            Game version: 1.{version.value.gameVersion}
           </div>
           {version.value.hardwareAcceleration === HardwareAccelerationStatus.Enabled && <div>
-            VP9 硬件加速作用中
+            VP9 hardware acceleration is in effect
           </div>}
           {version.value.hardwareAcceleration === HardwareAccelerationStatus.Disabled && <div>
-            VP9 硬件加速不可用（开启英特尔核显可加速视频转码）
+            VP9 hardware acceleration is unavailable (enable Intel integrated graphics to accelerate video transcoding)
           </div>}
           <div>
-            H264 编码器: {version.value.h264Encoder}
+            H264 encoder: {version.value.h264Encoder}
           </div>
           {version.value.license === LicenseStatus.Active && <div>
-            感谢你的支持！
+            Thank you for your support!
             <NA
               // @ts-ignore
               href="https://afdian.com/a/Clansty"
               target="_blank"
-            >如果还想继续赞助请点击</NA>
+            >If you'd like to continue supporting, please click here</NA>
           </div>}
           {version.value.license === LicenseStatus.Inactive && <NFlex align="center">
-            赞助以帮助开发并获取更多功能
+            Support us to help development and gain more features
             <StorePurchaseButton/>
             <NButton secondary onClick={() => window.open("https://afdian.com/item/90b4d1fe70e211efab3052540025c377")}>
               <span class="text-lg c-#946ce6 mr-2 translate-y-.25">
                 <AfdianIcon/>
               </span>
-              爱发电
+              Afdian
             </NButton>
           </NFlex>}
         </NFlex>

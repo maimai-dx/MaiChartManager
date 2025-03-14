@@ -2,7 +2,7 @@ import { computed, defineComponent, PropType } from "vue";
 import { NButton, NFlex, NInputGroup, NInputGroupLabel, NInputNumber, NPopover } from "naive-ui";
 import { selectedADir, version } from "@/store/refs";
 
-// 这是 version 不是 addVersion，是大家都喜欢写 22001 的那个 version
+// This is the version, not addVersion. It's the version that everyone likes to write as 22001
 export default defineComponent({
   props: {
     value: Number
@@ -17,12 +17,12 @@ export default defineComponent({
     return () => <NInputGroup>
       <NInputNumber showButton={false} class="w-full" v-model:value={value.value} min={0}/>
       {!!version.value?.gameVersion && <>
-        {/* 只有成功识别了游戏版本才显示 */}
-        {/* 按钮边框层级有问题 */}
+        {/* Only display after successfully detecting the game version */}
+        {/* There is a problem with the button border z-index */}
         <NButton class={value.value < b15val.value ? "z-1" : ""} type={value.value < b15val.value ? 'success' : 'default'} ghost
-                 disabled={selectedADir.value === 'A000'} onClick={() => value.value = 20000}>计入 B35</NButton>
+                 disabled={selectedADir.value === 'A000'} onClick={() => (value.value = 20000)}> Include in B35</NButton>
         <NButton class={value.value >= b15val.value ? "z-1" : ""} type={value.value >= b15val.value ? 'success' : 'default'} ghost
-                 disabled={selectedADir.value === 'A000'} onClick={() => value.value = 20000 + version.value!.gameVersion! * 100}>计入 B15</NButton>
+                 disabled={selectedADir.value === 'A000'} onClick={() => (value.value = 20000 + version.value!.gameVersion! * 100)}> Include in B15</NButton>
       </>}
       <NPopover trigger="hover">
         {{
@@ -30,11 +30,11 @@ export default defineComponent({
             ?
           </NInputGroupLabel>,
           default: () => <div>
-            如果游戏版本是
+            If the game version is
             <span class="c-orange"> 1.{version.value?.gameVersion || 45} </span>
-            的话，这里的数字大于等于
+            , then if the number here is greater than or equal to
             <span class="c-orange"> 2{version.value?.gameVersion || 45}00 </span>
-            就会让歌出现在 B15 里面，否则就会出现在 B35 里面
+            the tracks will appear in B15; otherwise, they will appear in B35.
           </div>
         }}
       </NPopover>

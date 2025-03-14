@@ -10,8 +10,8 @@ export default defineComponent({
   },
   setup(props, { emit }) {
     return () => <NFlex align="center" class="m-l-35 translate-y--3">
-      作者：Minepig
-      <NButton secondary onClick={() => api.OpenJudgeAccuracyInfoPdf()}>查看说明文件</NButton>
+      Author: Minepig
+      <NButton secondary onClick={() => api.OpenJudgeAccuracyInfoPdf()}>View instructions file</NButton>
     </NFlex>;
   },
 });

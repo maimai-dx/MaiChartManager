@@ -20,8 +20,8 @@ export default defineComponent({
           props.dir.subFiles!.some(it => it === 'DataConfig.xml') ?
             <NPopover trigger="hover">
               {{
-                trigger: () => '存放官谱',
-                default: () => '由于存在 DataConfig.xml，该目录将标记为存放官谱'
+                trigger: () => "Stores Official Charts",
+                default: () => "Because DataConfig.xml exists, this directory will be marked as storing official charts"
               }}
             </NPopover> :
             <OfficialChartToggle dir={props.dir}/>

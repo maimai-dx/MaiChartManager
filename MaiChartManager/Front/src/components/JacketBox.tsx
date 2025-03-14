@@ -24,7 +24,7 @@ export default defineComponent({
           startIn: 'downloads',
           types: [
             {
-              description: "图片",
+              description: "Image",
               accept: {
                 "application/jpeg": [".jpeg", ".jpg"],
                 "application/png": [".png"],
@@ -39,11 +39,11 @@ export default defineComponent({
         const res = await api.SetMusicJacket(props.info.id!, selectedADir.value, {file});
         if (res.error) {
           const error = res.error as any;
-          dialog.warning({title: '设置失败', content: error.message || error});
+          dialog.warning({title: 'Setting failed', content: error.message || error});
           return;
         }
         if (res.data) {
-          dialog.info({title: '设置失败', content: res.data})
+          dialog.info({title: 'Setting failed', content: res.data})
           return;
         }
         updateTime.value = Date.now()
@@ -53,7 +53,7 @@ export default defineComponent({
       } catch (e: any) {
         if (e.name === 'AbortError') return
         console.log(e)
-        globalCapture(e, "替换图片失败")
+        globalCapture(e, "Failed to replace image")
       }
     }
 

@@ -17,7 +17,7 @@ export default defineComponent({
     return () => <NModal
       preset="card"
       class="w-[min(40vw,40em)]"
-      title="正在导入..."
+      title="Importing..."
       closable={false}
       maskClosable={false}
       closeOnEsc={false}
@@ -25,22 +25,22 @@ export default defineComponent({
     >
       <NFlex vertical class="text-4">
         <div>
-          <span class="op-90">当前正在处理的项目：</span>
+          <span class="op-90">The project currently being processed:</span>
           {props.current.name}
         </div>
-        <Step step={IMPORT_STEP.create} current={props.current.importStep} name="创建乐曲"/>
-        <Step step={IMPORT_STEP.chart} current={props.current.importStep} name="转换谱面"/>
-        <Step step={IMPORT_STEP.music} current={props.current.importStep} name="转码音频"/>
-        {props.current.movie && <Step step={IMPORT_STEP.movie} current={props.current.importStep} name="转码视频"/>}
+        <Step step={IMPORT_STEP.create} current={props.current.importStep} name="Create Song"/>
+        <Step step={IMPORT_STEP.chart} current={props.current.importStep} name="Convert Chart"/>
+        <Step step={IMPORT_STEP.music} current={props.current.importStep} name="Transcode Audio"/>
+        {props.current.movie && <Step step={IMPORT_STEP.movie} current={props.current.importStep} name="Transcode Video"/>}
         {props.current.movie && !!props.movieProgress && <NProgress
             type="line"
             percentage={props.movieProgress}
             indicator-placement="inside"
             processing
         >
-          {props.movieProgress === 100 ? '还在处理，别急…' : `${props.movieProgress}%`}
+          {props.movieProgress === 100 ? 'Still processing, don\'t worry...' : `${props.movieProgress}%`}
         </NProgress>}
-        <Step step={IMPORT_STEP.jacket} current={props.current.importStep} name="导入封面"/>
+        <Step step={IMPORT_STEP.jacket} current={props.current.importStep} name="Import Cover"/>
       </NFlex>
     </NModal>
   }

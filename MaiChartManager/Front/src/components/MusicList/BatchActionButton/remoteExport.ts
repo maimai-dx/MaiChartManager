@@ -69,7 +69,7 @@ export default async (setStep: (step: STEP) => void, musicList: MusicXmlWithABJa
       } catch (e) {
         console.error(e);
         notify.error({
-          title: '导出失败',
+          title: 'Export Failed',
           content: music.name!,
         })
       }

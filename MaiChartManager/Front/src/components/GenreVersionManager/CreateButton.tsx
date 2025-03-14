@@ -11,7 +11,7 @@ export default defineComponent({
   },
   setup(props) {
     const show = ref(false);
-    const text = computed(() => props.type === EDIT_TYPE.Genre ? '流派' : '版本');
+    const text = computed(() => props.type === EDIT_TYPE.Genre ? 'Genre' : 'Version');
     const list = props.type === EDIT_TYPE.Genre ? genreList : addVersionList;
     const dialog = useDialog();
 
@@ -36,11 +36,11 @@ export default defineComponent({
       });
       if (res.error) {
         const error = res.error as any;
-        dialog.warning({title: '创建失败', content: error.message || error});
+        dialog.warning({ title: 'Creation Failed', content: error.message || error });
         return;
       }
       if (res.data) {
-        dialog.info({title: '创建失败', content: res.data})
+        dialog.info({ title: 'Creation Failed', content: res.data });
         return;
       }
 
@@ -51,12 +51,12 @@ export default defineComponent({
 
     return () => (
       <NButton onClick={setShow}>
-        新建
+        New
 
         <NModal
           preset="card"
           class="w-[min(30vw,25em)]"
-          title={`新建${text.value}`}
+          title={`New ${text.value}`}
           v-model:show={show.value}
         >{{
           default: () => <NForm label-placement="left" labelWidth="5em" showFeedback={false}>
@@ -64,7 +64,7 @@ export default defineComponent({
               <NFormItem label="ID">
                 <NInputNumber v-model:value={id.value} class="w-full" min={1}/>
               </NFormItem>
-              <NFormItem label="资源目录">
+              <NFormItem label="Asset Directory">
                 <NSelect
                   v-model:value={assetDir.value}
                   options={assetDirs.value.filter(it => it.dirName !== 'A000').map(dir => ({label: dir.dirName!, value: dir.dirName!}))}
@@ -73,7 +73,7 @@ export default defineComponent({
             </NFlex>
           </NForm>,
           footer: () => <NFlex justify="end">
-            <NButton onClick={save}>确定</NButton>
+            <NButton onClick={save}>Confirm</NButton>
           </NFlex>
         }}</NModal>
       </NButton>

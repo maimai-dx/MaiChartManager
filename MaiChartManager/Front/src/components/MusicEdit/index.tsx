@@ -52,10 +52,10 @@ const Component = defineComponent({
                         <span class="select-text">{info.value.id}</span>
                     </div>
                 </NFlex>
-                <NFormItem label="歌曲名称">
+                <NFormItem label="Song Name">
                     <NInput v-model:value={info.value.name}/>
                 </NFormItem>
-                <NFormItem label="作者">
+                <NFormItem label="Artist">
                     <NInput v-model:value={info.value.artist}/>
                 </NFormItem>
             </NFlex>
@@ -65,21 +65,21 @@ const Component = defineComponent({
             <NFormItem label="BPM">
                 <NInputNumber showButton={false} class="w-full" v-model:value={info.value.bpm} min={0}/>
             </NFormItem>
-            <NFormItem label="版本">
+            <NFormItem label="Version">
                 <VersionInput v-model:value={info.value.version}/>
             </NFormItem>
-            <NFormItem label="流派">
+            <NFormItem label="Genre">
                 <GenreInput options={genreList.value} v-model:value={info.value.genreId}/>
             </NFormItem>
-            <NFormItem label="版本分类">
+            <NFormItem label="Version Category">
                 <GenreInput options={addVersionList.value} v-model:value={info.value.addVersionId}/>
             </NFormItem>
-          {info.value.genreId === UTAGE_GENRE && // 宴会场
+          {info.value.genreId === UTAGE_GENRE && // Utage
               <>
-                  <NFormItem label="宴谱种类">
+                  <NFormItem label="Utage Type">
                       <NInput v-model:value={info.value.utageKanji}/>
                   </NFormItem>
-                  <NFormItem label="宴谱备注">
+                  <NFormItem label="Utage Note">
                       <NInput v-model:value={info.value.comment}/>
                   </NFormItem>
               </>}
@@ -128,7 +128,7 @@ const Tab = defineComponent({
 
 export default defineComponent({
   setup() {
-    // 加载时销毁，防止 watch 被执行
+    // Destroy on load to prevent watch from being executed
     return () => <Component key={selectMusicId.value}/>;
   }
 })

@@ -15,9 +15,9 @@ export default defineComponent({
     })
 
     return () => <NDrawer v-model:show={show.value} height={350} placement="bottom">
-      <NDrawerContent title="可以选择的文件类型">
+      <NDrawerContent title="Available File Types">
         <NFlex vertical size="large">
-          包含以下文件的文件夹，或者，一个包含一些这样的文件夹的文件夹
+          A folder containing the following files, or a folder containing some folders of this type
           <div class="grid cols-[2fr_1fr] justify-items-center h-50 gap-5 w-50%">
             <NFlex vertical align="center" class="w-full" size="small">
               <FileContentIcon type="maidata"/>

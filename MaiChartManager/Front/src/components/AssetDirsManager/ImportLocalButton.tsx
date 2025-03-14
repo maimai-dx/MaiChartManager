@@ -16,7 +16,7 @@ export default defineComponent({
     const importLocal = async () => {
       importWait.value = true;
       if (location.hostname !== 'mcm.invalid') {
-        // 浏览器模式
+        // Browser mode
         let folderHandle: FileSystemDirectoryHandle;
         try {
           folderHandle = await window.showDirectoryPicker({
@@ -52,7 +52,7 @@ export default defineComponent({
             responseType: 'json'
           })
           showProgress.value = false;
-          message.success(`导入 ${res.data.dirName} 成功`);
+          message.success(`Imported ${res.data.dirName} successfully`);
           updateAssetDirs();
         } catch (e) {
           console.log(e)
@@ -63,7 +63,7 @@ export default defineComponent({
         return;
       }
       try {
-        // 本地 webview 打开，使用本地模式
+        // Local webview opened, using local mode
         await api.RequestLocalImportDir();
       } finally {
         importWait.value = false;
@@ -72,11 +72,11 @@ export default defineComponent({
     }
 
     return () => <NButton onClick={importLocal} loading={importWait.value}>
-      导入
+      Import
       <NModal
         preset="card"
         class="w-[min(60vw,80em)]"
-        title="进度"
+        title="Progress"
         show={showProgress.value}
         maskClosable={false}
         closable={false}

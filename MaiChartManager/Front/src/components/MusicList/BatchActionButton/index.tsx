@@ -25,12 +25,12 @@ export default defineComponent({
     }
 
     return () => <NButton secondary onClick={show}>
-      批量操作与搜索
+      Batch Operations and Search
 
       <NModal
         preset="card"
         class={step.value === STEP.Select ? "w-[min(90vw,120em)]" : "w-[min(50vw,60em)]"}
-        title="批量操作"
+        title="Batch Operations"
         show={step.value !== STEP.None}
         onUpdateShow={() => step.value = STEP.None}
         maskClosable={false}

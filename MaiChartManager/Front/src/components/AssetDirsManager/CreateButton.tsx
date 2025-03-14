@@ -31,7 +31,7 @@ export default defineComponent({
     const save = async () => {
       if (id.value < 1 || id.value > 999) return;
       if (assetDirs.value.find(v => v.dirName === `A${id.value.toString().padStart(3, '0')}`)) {
-        dialog.info({title: '提示', content: '相同名称的目录已存在'});
+        dialog.info({ title: 'Notice', content: 'A directory with the same name already exists' });
         return;
       }
       show.value = false
@@ -41,12 +41,12 @@ export default defineComponent({
 
     return () => (
       <NButton onClick={setShow}>
-        新建
+        Create
 
         <NModal
           preset="card"
           class="w-[min(30vw,25em)]"
-          title="新建资源目录"
+          title="Create Resource Directory"
           v-model:show={show.value}
         >{{
           default: () => <NForm label-placement="left" labelWidth="5em" showFeedback={false}>
@@ -60,7 +60,7 @@ export default defineComponent({
             </NFlex>
           </NForm>,
           footer: () => <NFlex justify="end">
-            <NButton onClick={save}>确定</NButton>
+            <NButton onClick={save}>Confirm</NButton>
           </NFlex>
         }}</NModal>
       </NButton>

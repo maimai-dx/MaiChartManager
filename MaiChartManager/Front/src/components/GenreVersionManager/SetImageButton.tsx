@@ -33,7 +33,7 @@ export default defineComponent({
           startIn: 'downloads',
           types: [
             {
-              description: "图片",
+              description: "Images",
               accept: {
                 "application/jpeg": [".jpeg", ".jpg"],
                 "application/png": [".png"],
@@ -53,7 +53,7 @@ export default defineComponent({
       } catch (e: any) {
         if (e.name === 'AbortError') return
         console.log(e)
-        globalCapture(e, "设置分类图片失败")
+        globalCapture(e, "Failed to set genre image");
       } finally {
         showTip.value = false;
       }
@@ -63,7 +63,7 @@ export default defineComponent({
       {imageUrl.value ?
         <img src={imageUrl.value} class="max-w-full max-h-3em object-cover cursor-pointer" onClick={startProcess}/> :
         <NButton secondary onClick={startProcess}>
-          设置图片
+          Set Image
         </NButton>
       }
       <SelectFileTypeTip show={showTip.value}/>

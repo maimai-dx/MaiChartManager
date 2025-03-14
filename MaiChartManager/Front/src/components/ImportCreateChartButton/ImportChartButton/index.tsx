@@ -47,21 +47,21 @@ export default defineComponent({
       const maidata = await tryGetFile(dir, 'maidata.txt');
       if (!maidata) {
         reject = true;
-        errors.value.push({level: MessageLevel.Fatal, message: '未找到 maidata.txt', name: dir.name});
+        errors.value.push({level: MessageLevel.Fatal, message: 'Could not find maidata.txt', name: dir.name});
       }
       const track = await tryGetFile(dir, 'track.mp3') || await tryGetFile(dir, 'track.wav') || await tryGetFile(dir, 'track.ogg');
       if (!track) {
         reject = true;
-        errors.value.push({level: MessageLevel.Fatal, message: '未找到音频文件', name: dir.name});
+        errors.value.push({level: MessageLevel.Fatal, message: 'Could not find audio file', name: dir.name});
       }
       const bg = await tryGetFile(dir, 'bg.jpg') || await tryGetFile(dir, 'bg.png') || await tryGetFile(dir, 'bg.jpeg');
       if (!bg) {
-        errors.value.push({level: MessageLevel.Warning, message: '未找到背景图片', name: dir.name});
+        errors.value.push({level: MessageLevel.Warning, message: 'Could not find background image', name: dir.name});
       }
       let movie = await tryGetFile(dir, 'pv.mp4') || await tryGetFile(dir, 'mv.mp4') || await tryGetFile(dir, 'bg.mp4');
       if (movie && appVersion.value?.license !== LicenseStatus.Active) {
         movie = undefined;
-        errors.value.push({level: MessageLevel.Warning, message: '转换 PV 目前是赞助版功能，点击获取', name: dir.name, isPaid: true});
+        errors.value.push({level: MessageLevel.Warning, message: 'Converting PV is currently a sponsor-only feature. Click to learn more.', name: dir.name, isPaid: true});
       }
 
       let musicPadding = 0, first = 0, bar = 0, name = dir.name, isDx = false;
@@ -73,7 +73,7 @@ export default defineComponent({
         first = checkRet.first!;
         bar = checkRet.bar!;
         errors.value.push({first, padding: musicPadding, name: dir.name});
-        // 为了本地的错误和远程的错误都显示本地的名称，这里在修改 name
+        // In order to display the local name for both local errors and remote errors, we modify the name here
         name = checkRet.title!;
         if (checkRet.isDx) id += 1e4;
         isDx = checkRet.isDx!;
@@ -189,7 +189,7 @@ export default defineComponent({
           try {
             await uploadMovie(music.id, music.movie, padding);
           } catch (e: any) {
-            errors.value.push({level: MessageLevel.Warning, message: `视频转换失败: ${e?.message || e?.toString() || '我也不知道为什么'}`, name: music.name});
+            errors.value.push({level: MessageLevel.Warning, message: `Video conversion failed: ${e?.message || e?.toString() || 'I don\'t know either'}`,name: music.name});
           }
         }
 
@@ -201,7 +201,7 @@ export default defineComponent({
         console.log(music, e)
         captureException(e.error || e, {
           tags: {
-            context: '导入乐曲出错',
+            context: 'Error importing music',
             step: music.importStep,
           }
         })
@@ -241,7 +241,7 @@ export default defineComponent({
         }
 
         if (!meta.value.length && !errors.value.length)
-          throw new Error('没有找到可以导入的乐曲');
+          throw new Error('No songs found that can be imported');
 
         step.value = STEP.showWarning;
 
@@ -255,7 +255,7 @@ export default defineComponent({
 
         for (const music of meta.value) {
           currentProcessing.value = music;
-          // 自带 try 了
+          // There's already a try block
           await processMusic(music);
         }
 
@@ -268,7 +268,7 @@ export default defineComponent({
       } catch (e: any) {
         if (e.name === 'AbortError') return
         console.log(e)
-        globalCapture(e, "导入乐曲出错（全局）")
+        globalCapture(e, "Error importing music (global)")
       } finally {
         if (step.value !== STEP.showResultError)
           step.value = STEP.none
@@ -276,9 +276,9 @@ export default defineComponent({
     }
 
     return () => <NButton onClick={startProcess} secondary>
-      导入乐曲
+      Import Music
       <SelectFileTypeTip show={step.value === STEP.selectFile} closeModal={closeModal}/>
-      <CheckingModal title="正在检查..." show={step.value === STEP.checking} closeModal={closeModal}/>
+      <CheckingModal title="Checking..." show={step.value === STEP.checking} closeModal={closeModal}/>
       <ErrorDisplayIdInput show={step.value === STEP.showWarning} closeModal={closeModal} proceed={modalResolve.value!} meta={meta.value} errors={errors.value}
                            savedOptions={savedOptions.value} tempOptions={tempOptions.value}/>
       <ImportStepDisplay show={step.value === STEP.importing} closeModal={closeModal} current={currentProcessing.value} movieProgress={currentMovieProgress.value}/>

@@ -20,9 +20,9 @@ export default defineComponent({
     }
 
     return () => <NFlex class="p-l-10em translate-y--5" align="center">
-      {modInfo.value?.isJudgeDisplay4BInstalled ? <NFlex class="c-green-6">资源已安装</NFlex> : <NFlex class="c-orange">资源未安装</NFlex>}
+      {modInfo.value?.isJudgeDisplay4BInstalled ? (<NFlex class="c-green-6">Assets installed</NFlex>) : (<NFlex class="c-orange">Assets not installed</NFlex>)}
       <NButton secondary onClick={installAssets} loading={load.value}>
-        {modInfo.value?.isJudgeDisplay4BInstalled ? "重新安装" : "安装资源"}
+        {modInfo.value?.isJudgeDisplay4BInstalled ? "Reinstall" : "Install Assets"}
       </NButton>
     </NFlex>;
   },

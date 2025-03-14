@@ -89,7 +89,7 @@ export default defineComponent({
           startIn: 'downloads',
           types: [
             {
-              description: "支持的文件类型",
+              description: "Supported File Types",
               accept: {
                 "video/*": [".dat"],
                 "image/*": [],
@@ -118,13 +118,13 @@ export default defineComponent({
           progress.value = 0;
           step.value = STEP.Progress
           await uploadMovie(props.song.id!, file, offset.value);
-          console.log("upload movie success")
-          message.success("保存成功")
+          console.log("upload movie success");
+          message.success("Saved Successfully");
         }
       } catch (e: any) {
         if (e?.name === 'AbortError') return
         console.log(e)
-        globalCapture(e, "导入 PV 出错")
+        globalCapture(e, "Error Importing PV");
       } finally {
         step.value = STEP.None
         load.value = false;
@@ -132,12 +132,12 @@ export default defineComponent({
     }
 
     return () => <NButton secondary onClick={uploadFlow} loading={load.value}>
-      设置 PV
+      Set PV
 
       <NDrawer show={step.value === STEP.Select} height={250} placement="bottom">
-        <NDrawerContent title="可以选择的文件类型">
+        <NDrawerContent title="Selectable File Types">
           <NFlex vertical>
-            任何 FFmpeg 支持的视频格式或单张图片（赞助版功能），或者已经自行转换好的 DAT 文件
+            Any video format supported by FFmpeg or a single image (sponsor version feature), or a DAT file converted by yourself
             <div class="grid cols-4 justify-items-center text-8em gap-10">
               <FileTypeIcon type="MP4"/>
               <FileTypeIcon type="JPG"/>
@@ -149,36 +149,36 @@ export default defineComponent({
       <NModal
         preset="card"
         class="w-[min(30vw,25em)]"
-        title="设置偏移（秒）"
+        title="Set Offset (Seconds)"
         show={step.value === STEP.Offset}
-        onUpdateShow={() => step.value = STEP.None}
+        onUpdateShow={() => (step.value = STEP.None)}
       >{{
         default: () => <NFlex vertical size="large">
-          <div>设为正数可以在视频前面添加黑场空白，设为负数则裁掉视频前面的一部分</div>
+          <div>If you set a positive number, black padding will be added in front of the video. If you set a negative number, part of the beginning of the video will be cut.</div>
           <NInputNumber v-model:value={offset.value} class="w-full" step={0.01}/>
           <NCheckbox v-model:checked={noScale.value}>
-            不要缩放 BGA 到 1080 宽度
+            Do Not Scale BGA to 1080 Width
           </NCheckbox>
-          <NFormItem label="PV 编码" labelPlacement="left" showFeedback={false}>
+          <NFormItem label="PV Encoding" labelPlacement="left" showFeedback={false}>
             <NFlex vertical class="w-full">
               <NFlex class="h-34px" align="center">
                 <NSelect v-model:value={savedOptions.value.movieCodec} options={[
-                  {label: '优先 H264', value: MOVIE_CODEC.PreferH264},
-                  {label: '强制 H264', value: MOVIE_CODEC.ForceH264},
-                  {label: '强制 VP9 USM', value: MOVIE_CODEC.ForceVP9},
+                  {label: "Prefer H264", value: MOVIE_CODEC.PreferH264},
+                  {label: "Force H264", value: MOVIE_CODEC.ForceH264},
+                  {label: "Force VP9 USM", value: MOVIE_CODEC.ForceVP9},
                 ]}/>
               </NFlex>
             </NFlex>
           </NFormItem>
         </NFlex>,
         footer: () => <NFlex justify="end">
-          <NButton onClick={okResolve.value as any}>确定</NButton>
+          <NButton onClick={okResolve.value as any}>Confirm</NButton>
         </NFlex>
       }}</NModal>
       <NModal
         preset="card"
         class="w-[min(40vw,40em)]"
-        title="正在转换…"
+        title="Converting…"
         show={step.value === STEP.Progress}
         closable={false}
         maskClosable={false}
@@ -191,7 +191,7 @@ export default defineComponent({
           indicator-placement="inside"
           processing
         >
-          {progress.value === 100 ? '还在处理，别急…' : `${progress.value}%`}
+          {progress.value === 100 ? "Still processing, please wait..." : `${progress.value}%`}
         </NProgress>
       </NModal>
     </NButton>;

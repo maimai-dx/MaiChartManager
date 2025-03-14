@@ -18,7 +18,7 @@ export default defineComponent({
   setup(props, { emit }) {
     const filter = ref('')
     const nameColumn = reactive({
-      title: '标题', key: 'name',
+      title: 'Title', key: 'name',
       filterOptionValue: null as string | null,
       filter: (value, row) => {
         if (!value) return true;
@@ -29,20 +29,20 @@ export default defineComponent({
     } satisfies DataTableBaseColumn<MusicXmlWithABJacket>)
     const columns = computed(() => [
       { type: 'selection' },
-      { title: '资源目录', key: 'assetDir', width: '8em', filter: "default", filterOptions: _.uniq(musicListAll.value.map(it => it.assetDir!)).map(it => ({ label: it, value: it })) },
+      { title: 'Asset Directory', key: 'assetDir', width: '8em', filter: "default", filterOptions: _.uniq(musicListAll.value.map(it => it.assetDir!)).map(it => ({ label: it, value: it })) },
       {
         title: 'ID',
         key: 'id',
         width: '7em',
         sorter: 'default',
-        filterOptions: ['标准', 'DX', '宴会场'].map(it => ({ label: it, value: it })),
+        filterOptions: ['Standard', 'DX', 'Utage'].map(it => ({ label: it, value: it })), // 原“标准”/“宴会场”
         filter: (value, row) => {
           switch (value) {
-            case '标准':
+            case 'Standard':
               return row.id! < 1e4;
             case 'DX':
               return row.id! >= 1e4 && row.id! < 1e5;
-            case '宴会场':
+            case 'Utage':
               return row.id! >= 1e5;
             default:
               throw new Error('Invalid filter value');
@@ -50,14 +50,14 @@ export default defineComponent({
         }
       },
       {
-        title: '封面',
+        title: 'Cover',
         key: 'jacket',
         render: (row) => <JacketBox info={row} upload={false} class="h-20"/>,
         width: '8rem'
       },
       nameColumn,
       {
-        title: '版本',
+        title: 'Version',
         key: 'version',
         width: '8em',
         sorter: 'default',
@@ -68,21 +68,21 @@ export default defineComponent({
         }
       },
       {
-        title: '添加版本',
+        title: 'Add Version',
         key: 'addVersionId',
         render: (row) => <GenreOption genre={addVersionList.value.find(it => it.id === row.addVersionId)}/>,
         filter: "default",
         filterOptions: addVersionList.value.map(it => ({ label: it.genreName!, value: it.id! }))
       },
       {
-        title: '流派',
+        title: 'Genre',
         key: 'genreId',
         render: (row) => <GenreOption genre={genreList.value.find(it => it.id === row.genreId)}/>,
         filter: "default",
         filterOptions: genreList.value.map(it => ({ label: it.genreName!, value: it.id! }))
       },
       {
-        title: '谱面',
+        title: 'Charts',
         key: 'charts',
         render: (row) => <NFlex class="pt-1 text-sm" size="small">
           {
@@ -91,11 +91,11 @@ export default defineComponent({
           }
         </NFlex>,
         width: '20em',
-        filterOptions: ['绿', '黄', '红', '紫', '白'].map((label, value) => ({ label, value })),
+        filterOptions: ['Green', 'Yellow', 'Red', 'Purple', 'White'].map((label, value) => ({ label, value })),
         filter: (value, row) => row.charts![value as number].enable!
       },
       {
-        title: '跳转',
+        title: 'Jump',
         key: 'jump',
         width: '5em',
         render: (row) => <NButton quaternary class="p-2" onClick={() => {
@@ -128,9 +128,9 @@ export default defineComponent({
       {/*<NFlex>*/}
       {/*  <NButton onClick={() => {*/}
       {/*    emit('update:selectedMusicIds', musicListAll.value.filter(it => !props.selectedMusicIds!.includes(it)));*/}
-      {/*  }}>反选</NButton>*/}
+      {/*  }}>Invert Selection</NButton>*/}
       {/*</NFlex>*/}
-      <NInput placeholder="搜索名称 / 作曲 / 谱师 / 别名" v-model:value={filter.value}/>
+      <NInput placeholder="Search Title / Composer / Chart Designer / Alias" v-model:value={filter.value}/>
       <NDataTable
         columns={columns.value}
         data={musicListAll.value}
@@ -142,7 +142,7 @@ export default defineComponent({
         v-model:checkedRowKeys={selectedMusicIds.value}
       />
       <NFlex justify="end">
-        <NButton onClick={() => props.continue()} disabled={!selectedMusicIds.value.length}>继续</NButton>
+        <NButton onClick={() => props.continue()} disabled={!selectedMusicIds.value.length}>Continue</NButton>
       </NFlex>
     </NFlex>;
   }

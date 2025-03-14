@@ -15,11 +15,11 @@ export default defineComponent({
       <NGrid cols={2}>
         <NGridItem>
           {
-            new Array(8).fill(0).map((_, i) => <NFormItem key={i} label={`1P 按键 ${i + 1}`} labelPlacement="left" labelWidth="10em">
+            new Array(8).fill(0).map((_, i) => <NFormItem key={i} label={`1P Button ${i + 1}`} labelPlacement="left" labelWidth="10em">
               <NSelect v-model:value={props.entryStates[`GameSystem.KeyMap.Button${i + 1}_1P`].value} options={options}/>
             </NFormItem>)
           }
-          <NFormItem label="1P 选择键" labelPlacement="left" labelWidth="10em">
+          <NFormItem label="1P Select" labelPlacement="left" labelWidth="10em">
             <NSelect v-model:value={props.entryStates['GameSystem.KeyMap.Select_1P'].value} options={options}/>
           </NFormItem>
           <NFormItem label="Test" labelPlacement="left" labelWidth="10em">
@@ -28,11 +28,11 @@ export default defineComponent({
         </NGridItem>
         <NGridItem>
           {
-            new Array(8).fill(0).map((_, i) => <NFormItem key={i} label={`2P 按键 ${i + 1}`} labelPlacement="left" labelWidth="10em">
+            new Array(8).fill(0).map((_, i) => <NFormItem key={i} label={`2P Button ${i + 1}`} labelPlacement="left" labelWidth="10em">
               <NSelect v-model:value={props.entryStates[`GameSystem.KeyMap.Button${i + 1}_2P`].value} options={options}/>
             </NFormItem>)
           }
-          <NFormItem label="2P 选择键" labelPlacement="left" labelWidth="10em">
+          <NFormItem label="2P Select" labelPlacement="left" labelWidth="10em">
             <NSelect v-model:value={props.entryStates['GameSystem.KeyMap.Select_2P'].value} options={options}/>
           </NFormItem>
           <NFormItem label="Service" labelPlacement="left" labelWidth="10em">

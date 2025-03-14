@@ -16,12 +16,12 @@ export default defineComponent({
     }
 
     return () => <NButton secondary onClick={handleClick}>
-      编辑预览
+      Edit Preview
 
       <NModal
         preset="card"
         class="w-[min(60vw,80em)]"
-        title="编辑预览"
+        title="Edit Preview"
         v-model:show={show.value}
         maskClosable={false}
         closeOnEsc={false}

@@ -74,7 +74,7 @@ export default defineComponent({
         await api.InstallMelonLoader()
         await updateModInfo()
       } catch (e: any) {
-        globalCapture(e, "安装 MelonLoader 失败")
+        globalCapture(e, "Failed to install MelonLoader")
       } finally {
         installingMelonLoader.value = false
       }
@@ -82,7 +82,7 @@ export default defineComponent({
 
     const installAquaMai = async () => {
       try {
-        // 但是你根本看不到这个加载图标，因为太快了
+        // But you won't even see this loading icon, because it's too fast.
         installingAquaMai.value = true
         await api.InstallAquaMai()
         await updateModInfo()
@@ -90,7 +90,7 @@ export default defineComponent({
         showAquaMaiInstallDone.value = true
         setTimeout(() => showAquaMaiInstallDone.value = false, 3000);
       } catch (e: any) {
-        globalCapture(e, "安装 AquaMai 失败，文件可能被占用了？")
+        globalCapture(e, "Failed to install AquaMai, the files might be in use?")
       } finally {
         installingAquaMai.value = false
       }
@@ -103,7 +103,7 @@ export default defineComponent({
           await api.SetAquaMaiConfig(config.value)
           await updateMusicList()
         } catch (e) {
-          globalCapture(e, "保存 AquaMai 配置失败")
+          globalCapture(e, "Failed to save AquaMai configuration")
         }
       }
     })
@@ -112,33 +112,33 @@ export default defineComponent({
     return () => <NModal
       preset="card"
       class="w-[min(90vw,100em)]"
-      title="Mod 管理"
+      title="Mod Management"
       v-model:show={show.value}
     >
       {!!modInfo.value && <NFlex vertical>
         <NFlex align="center">
           MelonLoader:
-          {modInfo.value.melonLoaderInstalled ? <span class="c-green-6">已安装</span> : <span class="c-red-6">未安装</span>}
-          {!modInfo.value.melonLoaderInstalled && <NButton secondary loading={installingMelonLoader.value} onClick={installMelonLoader}>安装</NButton>}
+          {modInfo.value.melonLoaderInstalled ? <span class="c-green-6">Installed</span> : <span class="c-red-6">Not installed</span>}
+          {!modInfo.value.melonLoaderInstalled && <NButton secondary loading={installingMelonLoader.value} onClick={installMelonLoader}>Install</NButton>}
           <div class="w-8"/>
           AquaMai:
           {modInfo.value.aquaMaiInstalled ?
-            !shouldShowUpdate.value ? <span class="c-green-6">已安装</span> : <span class="c-orange">可更新</span> :
-            <span class="c-red-6">未安装</span>}
+            !shouldShowUpdate.value ? <span class="c-green-6">Installed</span> : <span class="c-orange">Updatable</span> :
+            <span class="c-red-6">Not installed</span>}
           <NButton secondary loading={installingAquaMai.value} onClick={() => installAquaMai()}
                    type={showAquaMaiInstallDone.value ? 'success' : 'default'}>
-            {showAquaMaiInstallDone.value ? <span class="i-material-symbols-done"/> : modInfo.value.aquaMaiInstalled ? '重新安装 / 更新' : '安装'}
+            {showAquaMaiInstallDone.value ? <span class="i-material-symbols-done"/> : modInfo.value.aquaMaiInstalled ? 'Reinstall / Update' : 'Install'}
           </NButton>
-          已安装:
+          Installed:
           <span>{modInfo.value.aquaMaiVersion}</span>
-          可安装:
+          Installable:
           <span class={shouldShowUpdate.value ? "c-orange" : ""}>{modInfo.value.bundledAquaMaiVersion}</span>
           <NSwitch v-model:value={useNewSort.value} class="m-l"/>
-          使用新的排序方式
+          Use new sorting method
         </NFlex>
-        {props.badgeType && <NCheckbox v-model:checked={disableBadge.value}>隐藏按钮上的角标</NCheckbox>}
+        {props.badgeType && <NCheckbox v-model:checked={disableBadge.value}>Hide the badge on the button</NCheckbox>}
         {configReadErr.value ? <NFlex vertical justify="center" align="center" class="min-h-100">
-          <div class="text-8">AquaMai 未安装或需要更新</div>
+          <div class="text-8">AquaMai is not installed or needs to be updated</div>
           <div class="c-gray-5 text-lg">{configReadErr.value}</div>
           <div class="c-gray-4 text-sm">{configReadErrTitle.value}</div>
         </NFlex> : <AquaMaiConfigurator config={config.value!} useNewSort={useNewSort.value}/>}

@@ -52,7 +52,7 @@ export const defaultSavedOptions = {
   ignoreLevel: false,
   addVersionId: 0,
   genreId: 1,
-  // 大家都喜欢写 22001，甚至不理解这个选项是干什么的
+  // Everyone likes to write 22001, and doesn't even understand what this option is for
   version: 22001,
   disableBga: false,
   noScale: false,

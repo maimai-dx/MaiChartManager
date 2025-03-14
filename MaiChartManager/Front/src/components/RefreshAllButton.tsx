@@ -13,7 +13,7 @@ export default defineComponent({
         await api.ReloadAll();
         await updateAll();
       } catch (err) {
-        globalCapture(err, "刷新失败")
+        globalCapture(err, "Refresh failed");
       } finally {
         load.value = false;
       }

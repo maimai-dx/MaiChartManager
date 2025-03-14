@@ -51,7 +51,7 @@ export default defineComponent({
       }
       if (res.error) {
         const error = res.error as any;
-        dialog.warning({title: '删除失败', content: error.message || error});
+        dialog.warning({title: 'Deletion failed', content: error.message || error});
         return;
       }
       updateGenreList();
@@ -103,14 +103,14 @@ export default defineComponent({
                       class="b b-gray-3 b-solid rounded-sm h-12 lh-normal box-content text-align-center resize-none cursor-text p-0 my-4 text-1em"
                       onKeydown={e => {
                         if (e.key === 'Enter') {
-                          if (props.genre.genreNameTwoLine?.includes('\n')) { // 不能有两个换行
+                          if (props.genre.genreNameTwoLine?.includes('\n')) { // Cannot have two line breaks
                             e.stopPropagation();
                             e.preventDefault();
                           }
                         }
                       }}
             /> :
-            // contenteditable 的换行有疑难杂症
+            // Line breaks in contenteditable can be tricky
             <pre class="b b-gray-3 b-solid rounded-sm h-12 lh-normal box-content text-align-center flex items-center justify-center my-4">{props.genre.genreNameTwoLine}</pre>
         }
         <Buttons/>

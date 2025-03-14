@@ -15,7 +15,7 @@ export default defineComponent({
           key: it
         })),
         {
-          label: () => <span class="c-blue-5 flex items-center">添加</span>,
+          label: () => <span class="c-blue-5 flex items-center">Add</span>,
           key: 'add'
         }
       ]

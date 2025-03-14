@@ -9,10 +9,10 @@ export default defineComponent({
     const onClick = () => {
       if (location.hostname !== 'mcm.invalid') {
         dialog.info({
-          title: '提示',
-          content: '你需要在运行服务器端的设备上操作购买',
-          positiveText: '继续',
-          negativeText: '取消',
+          title: 'Notice',
+          content: 'You need to make the purchase on a device running the server side',
+          positiveText: 'Continue',
+          negativeText: 'Cancel',
           onPositiveClick: () => {
             api.RequestPurchase()
           }

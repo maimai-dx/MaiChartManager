@@ -35,7 +35,7 @@ export default defineComponent({
       <NModal
         preset="card"
         class="w-[min(30vw,25em)]"
-        title={`创建乐曲`}
+        title={`Create Song`}
         v-model:show={show.value}
       >{{
         default: () => <NForm label-placement="left" labelWidth="5em" showFeedback={false}>
@@ -46,7 +46,7 @@ export default defineComponent({
                 <MusicIdConflictNotifier id={id.value}/>
               </NFlex>
             </NFormItem>
-            <NFormItem label="谱面类型">
+            <NFormItem label="Chart Type">
               <NFlex>
                 <NRadio checked={id.value < 1e4} onUpdateChecked={() => id.value -= 1e4}>
                   <img src={stdIcon} class="h-1.5em mt--0.6"/>
@@ -59,7 +59,7 @@ export default defineComponent({
           </NFlex>
         </NForm>,
         footer: () => <NFlex justify="end">
-          <NButton onClick={save}>确定</NButton>
+          <NButton onClick={save}>Confirm</NButton>
         </NFlex>
       }}</NModal>
     );

@@ -24,7 +24,7 @@ export default defineComponent({
     const userInput = ref("");
 
     watch(() => error.value, (v, old) => {
-      // 防止输入到一半出另一个错误清空输入
+      // Prevent clearing the input if a new error occurs mid-typing
       if (old) return;
       userInput.value = "";
     });
@@ -32,27 +32,27 @@ export default defineComponent({
     const report = () => {
       captureFeedback({
         associatedEventId: errorId.value,
-        message: userInput.value || "无",
+        message: userInput.value || "None",
       })
-      nMessage.success("感谢大佬的反馈！");
+      nMessage.success("Thank you for your feedback!");
       error.value = null;
     }
 
     return () => <NModal
       preset="card"
       class="w-[min(50vw,60em)]"
-      title="出错了！"
+      title="An error occurred!"
       show={!!error.value}
-      onUpdateShow={() => error.value = null}
+      onUpdateShow={() => (error.value = null)}
     >
       {{
-        default: () => <NFlex vertical size="large">
+        default: () => (<NFlex vertical size="large">
           <div class="text-lg">{errorContext.value}</div>
           {message.value}
-          <NInput v-model:value={userInput.value} class="w-full" type="textarea" placeholder="可以提供一下相关背景和上下文吗？比如说你的游戏或者乐曲有没有什么特别之处"/>
-        </NFlex>,
+          <NInput v-model:value={userInput.value} class="w-full" type="textarea" placeholder="Could you please provide some relevant background or context? For example, does your game or music have any special characteristics?"/>
+        </NFlex>
         footer: () => <NFlex justify="end">
-          <NButton onClick={report}>发送反馈</NButton>
+          <NButton onClick={report}>Send Feedback</NButton>
         </NFlex>
       }}
     </NModal>;

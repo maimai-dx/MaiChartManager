@@ -66,52 +66,53 @@ export default defineComponent({
       <NRadioGroup v-model:value={selectedOption.value} disabled={load.value}>
         <NFlex vertical>
           {
-            props.selectedMusic?.some(it => it.assetDir === 'A000') ?
+            props.selectedMusic?.some(it => it.assetDir === 'A000') ? (
               <>
                 <NPopover trigger="hover" placement="top-start">{{
                   trigger: () =>
                     <NRadio disabled>
-                      编辑属性
+                      Edit properties
                     </NRadio>,
-                  default: () => '你选择了 A000 目录中的歌曲'
-                }}</NPopover>
+                    default: () => "You've selected songs from the A000 directory",
+                  }}
+                  }}</NPopover>
                 <NPopover trigger="hover" placement="top-start">{{
                   trigger: () =>
                     <NRadio disabled>
-                      删除
+                      Delete
                     </NRadio>,
-                  default: () => '你选择了 A000 目录中的歌曲'
+                    default: () => "You've selected songs from the A000 directory",
                 }}</NPopover>
               </> :
               <>
-                <NRadio value={OPTIONS.EditProps}>
-                  编辑属性
+                <NRadio value={OPTIONS.EditProps}>{OPTIONS.EditProps}>
+                  Edit properties
                 </NRadio>
                 <NRadio value={OPTIONS.Delete}>
-                  删除
+                  Delete
                 </NRadio>
               </>
-          }
+          )}
           <NRadio value={OPTIONS.CreateNewOpt}>
-            导出为 Opt（原始）
+            Export as Opt (Original
           </NRadio>
           <NRadio value={OPTIONS.CreateNewOptCompatible}>
-            导出为 Opt（保持谱面格式，移除 Event 等）
+            Export as Opt (Preserve chart format, remove Events, etc.)
           </NRadio>
           <NRadio value={OPTIONS.CreateNewOptMa2_103}>
-            导出为 Opt（Ma2 103 格式，移除 Event 等）
+            Export as Opt (Ma2 103 format, remove Events, etc.)
           </NRadio>
           <NRadio value={OPTIONS.ConvertToMaidata}>
-            转换为 Maidata
+            Convert to Maidata
           </NRadio>
           <NRadio value={OPTIONS.ConvertToMaidataIgnoreVideo}>
-            转换为 Maidata（无 BGA）
+            Convert to Maidata (no BGA)
           </NRadio>
         </NFlex>
       </NRadioGroup>
       <NFlex justify="end">
-        <NButton onClick={() => props.continue(STEP.Select)} disabled={load.value}>上一步</NButton>
-        <NButton onClick={proceed} loading={load.value} disabled={selectedOption.value === OPTIONS.None}>继续</NButton>
+          <NButton onClick={() => props.continue(STEP.Select)} disabled={load.value}>Previous Step</NButton>
+          <NButton onClick={proceed} loading={load.value} disabled={selectedOption.value === OPTIONS.None}>Continue</NButton>
       </NFlex>
     </NFlex>;
   }

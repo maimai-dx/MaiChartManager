@@ -9,9 +9,9 @@ export default defineComponent({
   },
   setup(props, {emit}) {
     return () => <NDrawer show={props.show} height={250} placement="bottom">
-      <NDrawerContent title="可以选择的文件类型">
+      <NDrawerContent title="Selectable File Types">
         <NFlex vertical size="large">
-          图片比例无所谓，但是最好是差不多那个比例的横向透明 PNG 图片。分辨率在 332x160 左右最好。
+          The image ratio doesn’t matter, but it’s best to have a horizontally transparent PNG image of roughly that ratio. A resolution of around 332x160 is best.
           <div class="grid cols-4 justify-items-center text-8em gap-10">
             <FileTypeIcon type="JPG"/>
             <FileTypeIcon type="PNG"/>

@@ -29,7 +29,7 @@ export default defineComponent({
 
     return () => selectedMusic.value && (
       <NButton secondary onClick={save} type={selectedMusic.value.modified ? "warning" : undefined}>
-        保存
+        Save
         {isAnimationShow.value && <Teleport to="body">
           <div class={animation.box}/>
         </Teleport>}

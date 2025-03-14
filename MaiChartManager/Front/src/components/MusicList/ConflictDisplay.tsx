@@ -16,7 +16,7 @@ export default defineComponent({
           // @ts-ignore
           <OverrideUpIcon class="c-blue text-2em"/> : <OverrideDownIcon class="c-indigo text-2em"/>,
         default: () => <NFlex vertical>
-          {props.type === 'up' ? '覆盖了以下目录中同 ID 的乐曲' : '被以下目录中同 ID 的乐曲覆盖'}
+          {props.type === 'up' ? 'Overrode the songs with the same ID in the following directories' : 'Was overridden by the songs with the same ID in the following directories'}
           {props.conflicts!.map((p, index) => <div key={index}>{p.assetDir}</div>)}
         </NFlex>
       }}

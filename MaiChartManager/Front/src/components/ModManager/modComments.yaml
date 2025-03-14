@@ -1,157 +1,157 @@
 sections:
-  cheat: “作弊”功能
-  ux: 用户体验改进
-  performance: 一些性能优化
-  fix: 修复一些潜在的问题
-  utils: 工具
-  touchSensitivity: 触摸灵敏度
-  timeSaving: 节省一些不知道宝不宝贵的时间
-  customKeyMap: 自定义按键映射
-  windowState: 游戏窗口属性
-  customCameraId: 自定义摄像头 ID
-  visual: 音符等视觉效果调整
+  cheat: Cheat Feature
+  ux: User Experience Improvements
+  performance: Some Performance Optimizations
+  fix: Fix Some Potential Issues
+  utils: Tools
+  touchSensitivity: Touch Sensitivity
+  timeSaving: Save Some Possibly Precious Time
+  customKeyMap: Custom Key Mapping
+  windowState: Game Window Properties
+  customCameraId: Custom Camera ID
+  visual: Adjustments to notes and other visual effects
 
 cheat:
-  ticketUnlock: 解锁游戏里所有可能的跑图券
-  mapUnlock: 解锁游戏里所有的区域，包括非当前版本的（并不会帮你跑完）
-  unlockUtage: 不需要万分也可以进宴会场
-  debugFeature: 恢复 SDGA 的自动播放（Home）和暂停（Enter）按键
+  ticketUnlock: Unlock all possible map tickets in the game
+  mapUnlock: Unlock all areas in the game, including those not in the current version (it won't help you complete them)
+  unlockUtage: You can enter the banquet hall without needing 10,000 points
+  debugFeature: Restore SDGA's auto-play (Home) and pause (Enter) keys
 
 ux:
-  skipWarningScreen: 跳过日服启动时候的 WARNING 界面
-  singlePlayer: 单人模式
-  skipToMusicSelection: 登录完成后直接进入选歌界面
-  customVersionString: 把右上角的版本更改为自定义文本
-  loadAssetsPng: 从 LocalAssets 目录加载封面，不开启的话看不到本程序设置的封面
-  loadJacketPng: 这是旧版本的残留选项。现在请使用 Load Assets Png
-  loadLocalBga: 就算没有 dat 格式的 BGA 也歌曲的封面做背景，不开启的话游戏中会没有背景
+  skipWarningScreen: Skip the WARNING screen when launching the JP version
+  singlePlayer: Single player mode
+  skipToMusicSelection: Go directly to the song selection screen after logging in
+  customVersionString: Change the top-right corner version text to a custom string
+  loadAssetsPng: Load covers from the LocalAssets directory. If disabled, you won't see the cover set by this program
+  loadJacketPng: This is a leftover option from an older version. Now please use Load Assets Png
+  loadLocalBga: Even if there's no BGA in dat format, use the song's cover as the background. If disabled, the game won't have a background
   quickSkip: |
-    长按 Service 键或者键盘上的 “7” 键可以跳过登录过程中的界面直接进入选歌界面或在选歌界面直接结束游戏
-    在游玩界面，按一下 “7” 或者 Service 键重开当前的歌，按 1P 的“选择”键立即结束当前乐曲
-    按住下方四个按钮（3456）使用官方快速重开（仅对非宴谱有效）
+    Hold down the Service button or the 7 key on the keyboard to skip the login screens and go directly to the song selection screen, or to end the game from the song selection screen.
+    During gameplay, press 7 or Service once to restart the current song, or press the Select key on 1P to immediately end the current song.
+    Hold down the four buttons below (3,4,5,6) to use the official quick restart (only works for non-banquet charts).
   loadAssetBundleWithoutManifest: |
-    优化图片资源的加载，就算没有 AssetBundleImages.manifest 也可以正常加载 ab 格式的图片资源
-    导入了删除曲包之类的话，应该需要开启这个
-  skipEventInfo: 跳过登录 / 注册游戏时候可能的 “发现了新的区域哟” “乐曲增加” “有活动哟” 之类的提示
+    Optimize the loading of image resources; even without AssetBundleImages.manifest, ab-format images can still be loaded.
+    If you've imported or removed song packs, for example, you may need to enable this.
+  skipEventInfo: Skip prompts that might appear when logging in/registering, such as 'A new area was discovered!', 'New songs added!', or 'There is an event!'
   randomBgm: |
-    在 `LocalAssets\Mai2Cue` 目录下放置旧版游戏的 Mai2Cue.{acb,awb} 并重命名的话，可以在播放游戏 BGM 的时候随机播放这里面的旧版游戏 BGM
-    和 2P 模式有冲突，如果你没有开启 'SinglePlayer' 的话，请关闭这个
-  demoMaster: 在闲置时的演示画面上播放紫谱而不是绿谱
-  execOnIdle: 在游戏闲置时执行指定的命令脚本
-  execOnEntry: 在玩家登录时执行指定的命令脚本
+    If you place and rename older Mai2Cue.{acb,awb} files in the `LocalAssets\Mai2Cue` directory, you can randomly play older BGMs while the game BGM plays.
+    This conflicts with 2P mode. If you haven't enabled 'SinglePlayer', please disable it.
+  demoMaster: During idle demo screens, play the purple chart instead of the green chart
+  execOnIdle: Execute the specified command script when the game is idle
+  execOnEntry: Execute the specified command script when the player logs in
   extendTimer: |
-    关掉那些游戏中的倒计时
-    如果你没有开启 'SinglePlayer' 的话，不建议开这个，不过要开的话也不是不可以
-  immediateSave: 打完一首歌的时候立即向服务器保存成绩
-  testProof: 防止不小心按到 Test 键，Test 键需要长按 1 秒才能生效
+    Disable those in-game countdown timers.
+    If you haven't enabled 'SinglePlayer', it's not recommended to enable this—but possible if you wish.
+  immediateSave: Save the score to the server immediately after finishing a song
+  testProof: Prevent accidental pressing of the Test key; it must be held for 1 second
   customPlaceName: |
-    自定义拍照的店铺名称
-    同时在 SDGA 中会启用店铺名称在照片中的显示（但是不会在游戏里有设置）
+    Customize the store name used in photos.
+    Also enables store name display in photos for SDGA (though there is no in-game setting for it).
   hideSelfMadeCharts: |
-    在选歌界面按下 Service 键或者键盘上的 “7” 键可以切换显示或者隐藏自制谱面
-    使用 资源目录管理 可以设置自制谱的标记
-  selectionDetail: 在选歌界面可以显示当前光标所在的乐曲的详情信息，比如说定数 版本 流派。以及鸟加之后可以推多少分
-  locale: Mod 中界面的语言
-  hideMask: 隐藏圆形遮罩
+    On the song selection screen, press the Service button or the 7 key on the keyboard to toggle the display of custom charts.
+    Use the resource directory manager to mark custom charts.
+  selectionDetail: Display details in the song selection screen, such as level rating, version, and genre—plus how many points you can gain after obtaining a bird icon
+  locale: The language of the Mod interface
+  hideMask: Hide the circular mask
   customFont: |
-    在 LocalAssets 目录下放置 font.ttf 可以替换游戏的全局字体
-    不可以和 FontFix 一起使用
-  customNoteSkin: 提供自定义音符皮肤的能力（高级功能）
+    Place font.ttf in the LocalAssets directory to replace the global in-game font.
+    Cannot be used together with FontFix.
+  customNoteSkin: Provide the ability to use custom note skins (advanced feature)
   trackStartProcessTweak: |
-    推迟了歌曲开始界面的动画
-    隐藏“TRACK X”字样和 DX/标准谱面的显示框
-    录制谱面确认用
+    Delay the animation on the song start screen.
+    Hide the “TRACK X” text and the DX/standard chart display frame.
+    Intended for chart verification recording.
   hideHanabi: |
-    完全隐藏烟花
-    不能和 HanabiFix 一起使用
+    Completely hide fireworks.
+    Cannot be used together with HanabiFix.
   touchToButtonInput: |
-    映射触摸操作至实体按键
-    仅在非游戏中界面工作
+    Map touch operations to physical buttons.
+    Only works outside of gameplay screens.
 
 performance:
-  improveLoadSpeed: 在自检界面，每个屏幕结束的时候不会等两秒才进入下一个屏幕
+  improveLoadSpeed: Do not wait two seconds to transition to the next screen after each screen finishes in the self-check interface
 
 fix:
-  skipVersionCheck: 如果账号版本比当前游戏设定的版本高的话也允许登录
+  skipVersionCheck: Allow login even if the account version is higher than the game’s configured version
   removeEncryption: |
-    连接私服时不会加密连接，同时移除不同版本的客户端可能会对 API 接口加的后缀
-    正常情况下，请保持这个选项开启
-  forceAsServer: 强制服务器模式，配置店内招募时关闭
-  forceFreePlay: 强制免费游玩
-  forcePaidPlay: 强制付费游玩并锁定 24 个币，和 ForceFreePlay 冲突
+    Do not encrypt connections when connecting to a private server, and remove any version-based suffix the client might add to API endpoints.
+    Under normal circumstances, keep this option enabled.
+  forceAsServer: Force server mode; disable when configuring store recruitment
+  forceFreePlay: Force free play
+  forcePaidPlay: Force paid play and lock 24 credits; conflicts with ForceFreePlay
   extendNotesPool: |
-    增加更多待命的音符贴图，防止奇怪的自制谱用完音符贴图池
-    如果遇到奇怪的谱面显示不正常或者闪退的话可以从 64 以上开始调整
-  frameRateLock: 强制设置帧率上限为 60 帧并关闭垂直同步。如果你的游戏没有问题，请不要使用
+    Increase the number of available note textures to prevent odd custom charts from exhausting the texture pool.
+    If you encounter strange chart displays or crashes, start adjusting from 64 upwards.
+  frameRateLock: Force a 60 FPS cap and disable VSync. Do not use this if your game is working fine
   fontFix: |
-    在显示字库里没有的字时使用微软雅黑 Bold 显示
-    不可以和 CustomFont 一起使用
+    Use Microsoft YaHei Bold for characters not present in the default font library.
+    Cannot be used together with CustomFont.
   slideJudgeTweak: |
-    让 BreakSlide 的 Critical 判定也可以像 BreakTap 一样闪烁
-    让圆弧形的 Slide 的判定显示与判定线精确对齐 (原本会有一点歪)
+    Allow BreakSlide’s Critical judgments to flash like BreakTap.
+    Precisely align the judgment display for curved Slides with the judgment line (originally slightly off).
   hanabiFix: |
-    修复 1p 模式下的烟花大小
-    不能和 HideHanabi 一起使用
+    Fix the size of fireworks in 1P mode.
+    Cannot be used together with HideHanabi.
   ignoreAimeServerError: |
-    防止因错误认为 AimeDB 服务器问题引起的灰网
-    建议开启
+    Prevent a gray screen caused by incorrectly detecting an AimeDB server error.
+    Recommended to enable.
 
 utils:
-  logUserId: 在玩家登录时调试输出用户 ID
-  judgeAdjustA: 全局增加 A 判，单位和游戏里一样
-  judgeAdjustB: 全局增加 B 判，单位和游戏里一样
-  touchDelay: 给触摸屏增加额外延迟，单位为毫秒，一秒 = 1000 毫秒。必须是整数
-  windowed: 窗口化游戏
+  logUserId: Output the user ID in the debug log when the player logs in
+  judgeAdjustA: Globally add A judgments, in the same units as in the game
+  judgeAdjustB: Globally add B judgments, in the same units as in the game
+  touchDelay: Add an extra delay (in milliseconds) to the touch screen; must be an integer
+  windowed: Run the game in windowed mode
   width: |
-    宽度和高度窗口化时为游戏窗口大小，全屏时为渲染分辨率
-    如果设为 0，窗口化将记住用户设定的大小，全屏时将使用当前显示器分辨率
-  height: 高度
+    The width and height refer to the window size in windowed mode and the rendering resolution in fullscreen mode.
+    If set to 0, windowed mode will remember the user-defined size, and fullscreen mode will use the current monitor resolution.
+  height: Height
   practiseMode: |
-    练习模式
-    在游戏中界面按下 Test 键打开练习模式界面（需要开启 Test Proof）
-    可以前进 / 后退 / 暂停 / 片段循环 / 加速 / 减速
-  selectionDetail: 在选歌界面可以显示当前光标所在的乐曲的详情信息，比如说定数 版本 流派。以及鸟加之后可以推多少分
-  frameRateDisplay: 左上角帧率显示
-  showNetErrorDetail: 出现灰网时显示原因
+    Practice Mode.
+    Press the Test key during the in-game screen to open the practice mode screen (requires Test Proof).
+    You can skip forward/backward, pause, loop sections, or change speed.
+  selectionDetail: Display details in the song selection screen, such as level rating, version, and genre—plus how many points can be gained after obtaining a bird icon
+  frameRateDisplay: Show the framerate in the top-left corner
+  showNetErrorDetail: Show the cause of any gray screen errors
   touchPanelBaudRate: |
-    调整触摸屏串口波特率，默认值 9600
-    需要硬件配合。如果你不清楚你是否可以使用，那你不能使用
-    改为 0 禁用
+    Adjust the baud rate of the touch screen serial port (default 9600).
+    Requires hardware support. If you are unsure whether you can use it, you cannot.
+    Set to 0 to disable.
 
 timeSaving:
-  skipWarningScreen: 跳过日服启动时候的 WARNING 界面
+  skipWarningScreen: Skip the WARNING screen when launching the JP version
   improveLoadSpeed: |
-    在自检界面，每个屏幕结束的时候都会等两秒才进入下一个屏幕，很浪费时间
-    开了这个选项之后就不会等了
-  skipToMusicSelection: 登录完成后直接进入选歌界面
-  skipEventInfo: 跳过登录 / 注册游戏时候可能的 “发现了新的区域哟” “乐曲增加” “有活动哟” 之类的提示
-  iWontTapOrSlideVigorously: 跳过“不要大力拍打或滑动哦”这个界面，数据一旦加载完就立马进入下一个界面
-  skipGameOverScreen: 跳过游戏结束的“再见”界面
-  skipTrackStart: 跳过乐曲开始界面
-  showQuickEndPlay: 音符结束之后显示像 AstroDX 一样的“跳过”按钮
+    On the self-check screen, each screen usually waits two seconds before moving on, which wastes time.
+    Enabling this option removes that delay.
+  skipToMusicSelection: Go directly to the song selection screen after logging in
+  skipEventInfo: Skip prompts that might appear when logging in/registering, such as 'A new area was discovered!', 'New songs added!', or 'There is an event!'
+  iWontTapOrSlideVigorously: Skip the 'Do not tap or slide vigorously' screen and proceed immediately once data loads
+  skipGameOverScreen: Skip the final 'Goodbye' screen at game end
+  skipTrackStart: Skip the song start screen
+  showQuickEndPlay: After notes finish, show a 'Skip' button like AstroDX
 
 windowState:
-  windowed: 窗口化游戏
+  windowed: Run the game in windowed mode
   width: |
-    宽度和高度窗口化时为游戏窗口大小，全屏时为渲染分辨率
-    如果设为 0，窗口化将记住用户设定的大小，全屏时将使用当前显示器分辨率
-  height: 高度
+    The width and height are for the window size in windowed mode and the rendering resolution in fullscreen mode.
+    If set to 0, windowed mode will remember the user-defined size, and fullscreen mode will use the current monitor resolution.
+  height: Height
   enable: |
-    启用此功能
-    不启用的话，不会对游戏窗口做任何操作
+    Enable this feature.
+    If not enabled, the game window will not be modified.
 
 customCameraId:
-  enable: 启用后可以指定游戏使用的摄像头
-  printCameraList: 启动时打印摄像头列表到日志中，可以作为修改的依据
+  enable: Once enabled, you can specify which camera the game uses
+  printCameraList: Print the camera list to the log at startup for reference
   leftQrCamera: DX Pass 1P
   rightQrCamera: DX Pass 2P
-  photoCamera: 玩家摄像头
-  chimeCamera: 二维码扫描摄像头
+  photoCamera: Player camera
+  chimeCamera: QR code scanning camera
 
 visual:
   judgeDisplay4B: |
-    更精细的判定表示
-    需开启 CustomSkins 并安装资源文件
+    More detailed judgment display.
+    Requires CustomSkins and resource file installation.
 
 shouldEnableOptions:
   GameSystem.Assets.LoadLocalImages: true
@@ -164,20 +164,20 @@ steps:
 options:
   General.Locale:
     - value: zh
-      label: 让我们说中文！
+      label: Let's speak Chinese!
     - value: en
       label: Let's speak English!
 
 commentOverrides:
   Fancy.GamePlay.JudgeDisplay4B: |
-    更精细的判定表示
-    需开启 CustomSkins 并安装资源文件
-    作者 @Minepig
+    More detailed judgment display.
+    Requires CustomSkins and resource file installation.
+    Author @Minepig
   GameSettings.TouchSensitivity: |
-    使用自定义的触摸灵敏度
-    这里启用之后 Test 里的设置就不再起作用了，不过还是可以使用 Test 测试（使用测试需要关闭 1P 模式）
+    Use custom touch sensitivity.
+    Once enabled, the settings in Test no longer take effect, but you can still use the Test menu (using Test requires disabling 1P mode).
   GameSystem.KeyMap: |
-    这里的设置无论你是否启用了 segatools 的 io4 模拟都会工作
-    但是它可能会和其他 Mod 类型的输入插件冲突，比如说 Mai2InputMod.dll。如有需要可以期待后续更新兼容的版本
+    These settings work regardless of whether you’ve enabled segatools’ io4 emulation.
+    However, they may conflict with other Mod-type input plugins (e.g., Mai2InputMod.dll). Please look forward to future compatible versions.
 nameOverrides:
   Fancy.GamePlay.JudgeDisplay4B: Judge Display 4B

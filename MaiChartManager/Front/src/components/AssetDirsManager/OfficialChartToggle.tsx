@@ -20,7 +20,7 @@ export default defineComponent({
         await api.PutAssetDirTxtValue({
           dirName: props.dir.dirName,
           fileName: 'OfficialChartsMark.txt',
-          content: '用于 AquaMai 标识此目录存放官谱'
+          content: 'Used by AquaMai to indicate that this directory stores official charts'
         });
       }
       await updateAssetDirs();
@@ -28,8 +28,8 @@ export default defineComponent({
 
     return () => <NButton secondary onClick={toggleSelfMadeChart}>
       <span class="i-material-symbols-repeat text-lg m-r-1"/>
-      存放
-      {isOfficialChart.value ? '官谱' : '自制谱'}
+      Store
+      {isOfficialChart.value ? 'Official Chart' : 'User-made Chart'}
     </NButton>;
   }
 })

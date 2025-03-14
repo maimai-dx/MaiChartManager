@@ -8,8 +8,8 @@ export const currentProcessItem = ref('');
 export default defineComponent({
   setup(props) {
     return () => <NFlex vertical>
-      <div>当前进度：{progressCurrent.value}/{progressAll.value}</div>
-      <div>当前处理：{currentProcessItem.value}</div>
+      <div>Current Progress: {progressCurrent.value}/{progressAll.value}</div>
+      <div>Current Task: {currentProcessItem.value}</div>
       <NProgress
         type="line"
         status="success"

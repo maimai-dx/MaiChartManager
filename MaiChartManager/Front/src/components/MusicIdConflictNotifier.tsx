@@ -13,7 +13,7 @@ export default defineComponent({
       {{
         trigger: () => <div class="text-#f0a020 i-material-symbols-warning-outline-rounded text-2em translate-y-.3"/>,
         default: () => <NFlex vertical>
-          以下目录中存在冲突的 ID
+          The following directories contain a conflicting ID
           {conflicts.value.map((p, index) => <div key={index}>{p.assetDir}</div>)}
         </NFlex>
       }}

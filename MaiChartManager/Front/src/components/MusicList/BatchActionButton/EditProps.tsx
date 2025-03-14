@@ -12,7 +12,7 @@ enum VERSION_OPTION {
 }
 
 const versionOptions = [
-  {label: '不修改', value: VERSION_OPTION.NotChange},
+  {label: 'Do Not Modify', value: VERSION_OPTION.NotChange},
   {label: 'B35', value: VERSION_OPTION.B35},
   {label: 'B15', value: VERSION_OPTION.B15},
 ]
@@ -49,7 +49,7 @@ export default defineComponent({
         selectMusicId.value = 0;
         updateMusicList();
       } catch (e) {
-        globalCapture(e, "批量修改失败");
+        globalCapture(e, "Batch modification failed");
       } finally {
         loading.value = false;
       }
@@ -57,24 +57,24 @@ export default defineComponent({
 
     return () => <NForm showFeedback={false} labelPlacement="top" disabled={loading.value}>
       <NFlex vertical>
-        <NFormItem label="版本">
+        <NFormItem label="Version">
           <NSelect v-model:value={versionOpt.value} options={versionOptions}/>
         </NFormItem>
-        <NFormItem label="流派">
+        <NFormItem label="Genre">
           <GenreInput options={[
-            {id: -1, genreName: '不修改'},
+            {id: -1, genreName: 'Do Not Modify'},
             ...genreList.value
           ]} v-model:value={genre.value}/>
         </NFormItem>
-        <NFormItem label="版本分类">
+        <NFormItem label="Version Category">
           <GenreInput options={[
-            {id: -1, genreName: '不修改'},
+            {id: -1, genreName: 'Do Not Modify'},
             ...addVersionList.value
           ]} v-model:value={addVersion.value}/>
         </NFormItem>
-        <NCheckbox v-model:checked={removeLevels.value}>移除定数，不计入 B50</NCheckbox>
+        <NCheckbox v-model:checked={removeLevels.value}>Remove difficulty values, exclude from B50</NCheckbox>
         <NFlex justify="end">
-          <NButton loading={loading.value} onClick={save}>保存</NButton>
+          <NButton loading={loading.value} onClick={save}>Save</NButton>
         </NFlex>
       </NFlex>
     </NForm>

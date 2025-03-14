@@ -34,7 +34,7 @@ export default defineComponent({
     return () => <NModal
       preset="card"
       class="w-[min(50vw,50em)]"
-      title="导入提示"
+      title="Import Prompt"
       v-model:show={show.value}
     >{{
       default: () => <NFlex vertical size="large">
@@ -44,16 +44,16 @@ export default defineComponent({
               props.errors.map((error, i) => {
                 if ('first' in error) {
                   if (error.padding > 0 && props.tempOptions.shift === ShiftMethod.Legacy) {
-                    return <NAlert key={i} type="info" title={error.name}>将在音频前面加上 {error.padding.toFixed(3)} 秒空白以保证第一押在第二小节</NAlert>
+                    return <NAlert key={i} type="info" title={error.name}>Will add {error.padding.toFixed(3)} seconds of silence at the beginning of the audio so that the first note is in the second measure</NAlert>
                   }
                   if (error.padding < 0 && props.tempOptions.shift === ShiftMethod.Legacy) {
-                    return <NAlert key={i} type="info" title={error.name}>将裁剪 {(-error.padding).toFixed(3)} 秒音频以保证第一押在第二小节</NAlert>
+                    return <NAlert key={i} type="info" title={error.name}>Will trim {(-error.padding).toFixed(3)} seconds of audio so that the first note is in the second measure</NAlert>
                   }
                   if (error.first > 0 && props.tempOptions.shift === ShiftMethod.NoShift) {
-                    return <NAlert key={i} type="info" title={error.name}>将裁剪 {error.first.toFixed(3)} 秒音频以对应 &first 的值</NAlert>
+                    return <NAlert key={i} type="info" title={error.name}>Will trim {error.first.toFixed(3)} seconds of audio to match the &first value</NAlert>
                   }
                   if (error.first < 0 && props.tempOptions.shift === ShiftMethod.NoShift) {
-                    return <NAlert key={i} type="info" title={error.name}>将在音频前面加上 {(-error.first).toFixed(3)} 秒空白以对应 &first 的值</NAlert>
+                    return <NAlert key={i} type="info" title={error.name}>Will add {(-error.first).toFixed(3)} seconds of silence at the beginning of the audio to match the &first value</NAlert>
                   }
                   return <></>
                 }
@@ -78,60 +78,60 @@ export default defineComponent({
           </NFlex>
         </NScrollbar>
         {!!props.meta.length && <>
-            为新导入的歌曲指定 ID
+            Assign an ID for the newly imported song(s)
             <NScrollbar class="max-h-24vh">
                 <NFlex vertical size="large">
                   {props.meta.map((meta, i) => <MusicIdInput key={i} meta={meta} utage={props.savedOptions.genreId === UTAGE_GENRE}/>)}
                 </NFlex>
             </NScrollbar>
-            <NFormItem label="流派" labelPlacement="left" labelWidth="5em" showFeedback={false}>
+            <NFormItem label="Genre" labelPlacement="left" labelWidth="5em" showFeedback={false}>
                 <GenreInput options={genreList.value} v-model:value={props.savedOptions.genreId}/>
             </NFormItem>
-            <NFormItem label="版本分类" labelPlacement="left" labelWidth="5em" showFeedback={false}>
+            <NFormItem label="Version Category" labelPlacement="left" labelWidth="5em" showFeedback={false}>
                 <GenreInput options={addVersionList.value} v-model:value={props.savedOptions.addVersionId}/>
             </NFormItem>
-            <NFormItem label="版本" labelPlacement="left" labelWidth="5em" showFeedback={false}>
+            <NFormItem label="Version" labelPlacement="left" labelWidth="5em" showFeedback={false}>
                 <VersionInput v-model:value={props.savedOptions.version}/>
             </NFormItem>
             <NCheckbox v-model:checked={props.savedOptions.ignoreLevel}>
-                忽略定数，不参与 B50 计算
+                Ignore constant value, do not participate in B50 calculation
             </NCheckbox>
             <NCheckbox v-model:checked={props.savedOptions.disableBga}>
-                有 BGA 也不要导入
+                Do not import BGA even if present
             </NCheckbox>
             <NCollapse>
-                <NCollapseItem title="高级选项">
+                <NCollapseItem title="Advanced Options">
                     <NFlex vertical>
-                        <NFormItem label="延迟调整模式" labelPlacement="left" showFeedback={false}>
+                        <NFormItem label="Delay Adjustment Mode" labelPlacement="left" showFeedback={false}>
                             <NFlex vertical class="w-full">
                                 <NFlex class="h-34px" align="center">
                                     <NRadioGroup v-model:value={props.tempOptions.shift}>
                                         <NPopover trigger="hover">
                                           {{
-                                            trigger: () => <NRadio value={ShiftMethod.Bar} label="按小节"/>,
+                                            trigger: () => <NRadio value={ShiftMethod.Bar} label="By Measure"/>,
                                             default: () => <div>
-                                              如果谱面前面的休止符长度小于一小节，那就在前面加上一小节的空白<br/>
-                                              适用于大部分谱面，防止第一个音符出现的时机奇怪和平移谱面引起的奇怪问题<br/>
-                                              第一个音符会在第二小节之内出来
+                                              If the rest at the start of the chart is shorter than one measure, then one measure of silence will be added at the beginning.<br/>
+                                              This is suitable for most charts, helping avoid odd initial note timing or issues caused by shifting the chart.<br/>
+                                              The first note will appear within the second measure.
                                             </div>
                                           }}
                                         </NPopover>
                                         <NPopover trigger="hover">
                                           {{
-                                            trigger: () => <NRadio value={ShiftMethod.Legacy} label="旧版"/>,
+                                            trigger: () => <NRadio value={ShiftMethod.Legacy} label="Legacy"/>,
                                             default: () => <div>
-                                              将谱面的第一押对准第二小节的第一拍<br/>
-                                              v1.1.1 及以前版本默认的处理方式<br/>
-                                              可能会因为谱面非整数平移而引起一些比如说 BPM 变化的谱面出现问题
+                                              Align the chart's first note with the first beat of the second measure.<br/>
+                                              This was the default method in versions up to v1.1.1.<br/>
+                                              May cause issues if the chart is shifted by non-integer amounts, for example with BPM changes.
                                             </div>
                                           }}
                                         </NPopover>
                                         <NPopover trigger="hover">
                                           {{
-                                            trigger: () => <NRadio value={ShiftMethod.NoShift} label="不移动谱面"/>,
+                                            trigger: () => <NRadio value={ShiftMethod.NoShift} label="No Shift"/>,
                                             default: () => <div>
-                                              完全不修改谱面，从音频中删除 &first 的长度（如果有）<br/>
-                                              可能会导致第一个音符出现的时机比较奇怪，比如说刚开始就有音符
+                                              Do not modify the chart at all; remove the length specified by &first from the audio (if present).<br/>
+                                              This may cause the first note timing to be odd, for example a note might appear immediately at the start.
                                             </div>
                                           }}
                                         </NPopover>
@@ -140,15 +140,15 @@ export default defineComponent({
                             </NFlex>
                         </NFormItem>
                         <NCheckbox v-model:checked={props.savedOptions.noScale}>
-                            不要缩放 BGA 到 1080 宽度，此选项会记住
+                            Do not scale the BGA to a width of 1080. This option will be saved
                         </NCheckbox>
-                        <NFormItem label="PV 编码" labelPlacement="left" showFeedback={false}>
+                        <NFormItem label="PV Encoding" labelPlacement="left" showFeedback={false}>
                             <NFlex vertical class="w-full">
                                 <NFlex class="h-34px" align="center">
                                     <NSelect v-model:value={props.savedOptions.movieCodec} options={[
-                                      {label: '优先 H264', value: MOVIE_CODEC.PreferH264},
-                                      {label: '强制 H264', value: MOVIE_CODEC.ForceH264},
-                                      {label: '强制 VP9 USM', value: MOVIE_CODEC.ForceVP9},
+                                      {label: 'Prefer H264', value: MOVIE_CODEC.PreferH264},
+                                      {label: 'Force H264', value: MOVIE_CODEC.ForceH264},
+                                      {label: 'Force VP9 USM', value: MOVIE_CODEC.ForceVP9},
                                     ]}/>
                                 </NFlex>
                             </NFlex>
@@ -159,8 +159,8 @@ export default defineComponent({
         </>}
       </NFlex>,
       footer: () => <NFlex justify="end">
-        <NButton onClick={() => show.value = false}>{props.meta.length ? '取消' : '关闭'}</NButton>
-        {!!props.meta.length && <NButton onClick={props.proceed}>继续</NButton>}
+        <NButton onClick={() => show.value = false}>{props.meta.length ? 'Cancel' : 'Close'}</NButton>
+        {!!props.meta.length && <NButton onClick={props.proceed}>Continue</NButton>}
       </NFlex>
     }}</NModal>;
   }

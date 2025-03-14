@@ -1,4 +1,4 @@
-常用:
+Common:
   - General
   - GameSystem.SinglePlayer
   - GameSystem.DisableTimeout
@@ -11,12 +11,12 @@
   - GameSettings.CreditConfig
   - Fancy.GamePlay.ExtendNotesPool
 
-直读:
+DirectRead:
   - GameSystem.Assets.LoadAssetBundleWithoutManifest
   - GameSystem.Assets.LoadLocalImages
   - GameSystem.Assets.MovieLoader
 
-全解和跳过:
+FullyUnlockAndSkip:
   - GameSystem.Unlock
   - Tweaks.TimeSaving.SkipStartupWarning
   - Tweaks.TimeSaving.EntryToMusicSelection
@@ -27,7 +27,7 @@
   - Tweaks.TimeSaving.IWontTapOrSlideVigorously
   - UX.QuickEndPlay
 
-美化:
+Beautify:
   - GameSystem.Assets.Fonts
   - Fancy.CustomLogo
   - Fancy.CustomPlaceName
@@ -42,7 +42,7 @@
   - Fancy.GamePlay.SlideFadeInTweak
   - Fancy.GamePlay.SlideLayerReverse
 
-实用工具:
+Utilities:
   - UX.HideSelfMadeCharts
   - UX.JudgeAccuracyInfo
   - UX.PracticeMode
@@ -51,13 +51,13 @@
   - Fancy.GamePlay.JudgeDisplay4B
   - Fancy.Triggers
 
-键位和灵敏度:
+KeyBindingsAndSensitivity:
   - GameSystem.HidInput
   - GameSystem.AdxHidInput
   - GameSystem.KeyMap
   - GameSettings.TouchSensitivity
 
-调试:
+Debug:
   - GameSystem.Window
   - GameSettings.JudgeAdjust
   - Tweaks.IgnoreAimeServerError
@@ -70,7 +70,7 @@
   - Utils.LogNetworkRequests
   - Utils.ShowErrorLog
 
-高级设置:
+AdvancedSettings:
   - Fancy.HideMask
   - GameSettings.ForceAsServer
   - GameSystem.RemoveEncryption
@@ -80,7 +80,7 @@
   - GameSystem.CustomCameraId
   - UX.ServerAnnouncement
 
-过新过热:
+Experimental:
   - Fancy.CustomTrackStartDiff
   - Fancy.GamePlay.BreakSlideJudgeBlink
   - Fancy.GamePlay.CustomNoteTypes

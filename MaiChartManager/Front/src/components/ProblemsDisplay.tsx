@@ -8,7 +8,7 @@ export default defineComponent({
   setup(props) {
     return () => !!props.problems?.length && <NPopover trigger="hover">
       {{
-        // 它又不居中
+        // It still isn't centered
         trigger: () => <div class="text-#f0a020 i-material-symbols-warning-outline-rounded text-2em translate-y-.3"/>,
         default: () => <NFlex vertical>
           {props.problems!.map((p, index) => <div key={index}>{p}</div>)}
