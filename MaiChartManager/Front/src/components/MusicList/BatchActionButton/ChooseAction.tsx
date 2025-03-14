@@ -66,7 +66,7 @@ export default defineComponent({
       <NRadioGroup v-model:value={selectedOption.value} disabled={load.value}>
         <NFlex vertical>
           {
-            props.selectedMusic?.some(it => it.assetDir === 'A000') ? (
+            props.selectedMusic?.some(it => it.assetDir === 'A000') ?
               <>
                 <NPopover trigger="hover" placement="top-start">{{
                   trigger: () =>
@@ -74,7 +74,6 @@ export default defineComponent({
                       Edit properties
                     </NRadio>,
                     default: () => "You've selected songs from the A000 directory",
-                  }}
                   }}</NPopover>
                 <NPopover trigger="hover" placement="top-start">{{
                   trigger: () =>
@@ -85,14 +84,14 @@ export default defineComponent({
                 }}</NPopover>
               </> :
               <>
-                <NRadio value={OPTIONS.EditProps}>{OPTIONS.EditProps}>
+                <NRadio value={OPTIONS.EditProps}>
                   Edit properties
                 </NRadio>
                 <NRadio value={OPTIONS.Delete}>
                   Delete
                 </NRadio>
               </>
-          )}
+          }
           <NRadio value={OPTIONS.CreateNewOpt}>
             Export as Opt (Original
           </NRadio>

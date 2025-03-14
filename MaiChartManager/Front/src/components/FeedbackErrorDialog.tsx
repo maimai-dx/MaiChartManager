@@ -46,11 +46,11 @@ export default defineComponent({
       onUpdateShow={() => (error.value = null)}
     >
       {{
-        default: () => (<NFlex vertical size="large">
+        default: () => <NFlex vertical size="large">
           <div class="text-lg">{errorContext.value}</div>
           {message.value}
           <NInput v-model:value={userInput.value} class="w-full" type="textarea" placeholder="Could you please provide some relevant background or context? For example, does your game or music have any special characteristics?"/>
-        </NFlex>
+        </NFlex>,
         footer: () => <NFlex justify="end">
           <NButton onClick={report}>Send Feedback</NButton>
         </NFlex>

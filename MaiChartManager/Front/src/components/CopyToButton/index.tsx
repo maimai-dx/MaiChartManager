@@ -42,7 +42,7 @@ export default defineComponent({
         key: DROPDOWN_OPTIONS.exportMaidataIgnoreVideo,
       },
       {
-        label: () => <a href={getUrl(`ExportAsMaidataApi/${selectedADir.value}/${selectMusicId.value}?ignoreVideo=true`)} download={`${selectMusicId.value} - ${selectedMusic.value?.name} - Maidata.zip`}>Export Zip (Maidata, No BGA)</a>
+        label: () => <a href={getUrl(`ExportAsMaidataApi/${selectedADir.value}/${selectMusicId.value}?ignoreVideo=true`)} download={`${selectMusicId.value} - ${selectedMusic.value?.name} - Maidata.zip`}>Export Zip (Maidata, No BGA)</a>,
         key: DROPDOWN_OPTIONS.exportMaiDataZipIgnoreVideo,
       },
       ...(selectedADir.value === 'A000' ? [] : [{
