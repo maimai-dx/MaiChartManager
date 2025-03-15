@@ -73,14 +73,14 @@ export default defineComponent({
                     <NRadio disabled>
                       Edit properties
                     </NRadio>,
-                    default: () => "You've selected songs from the A000 directory",
-                  }}</NPopover>
+                  default: () => "You've selected songs from the A000 directory",
+                }}</NPopover>
                 <NPopover trigger="hover" placement="top-start">{{
                   trigger: () =>
                     <NRadio disabled>
                       Delete
                     </NRadio>,
-                    default: () => "You've selected songs from the A000 directory",
+                  default: () => "You've selected songs from the A000 directory",
                 }}</NPopover>
               </> :
               <>
@@ -110,8 +110,8 @@ export default defineComponent({
         </NFlex>
       </NRadioGroup>
       <NFlex justify="end">
-          <NButton onClick={() => props.continue(STEP.Select)} disabled={load.value}>Previous Step</NButton>
-          <NButton onClick={proceed} loading={load.value} disabled={selectedOption.value === OPTIONS.None}>Continue</NButton>
+        <NButton onClick={() => props.continue(STEP.Select)} disabled={load.value}>Previous Step</NButton>
+        <NButton onClick={proceed} loading={load.value} disabled={selectedOption.value === OPTIONS.None}>Continue</NButton>
       </NFlex>
     </NFlex>;
   }

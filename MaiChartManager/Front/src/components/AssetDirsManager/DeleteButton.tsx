@@ -32,7 +32,7 @@ export default defineComponent({
         await updateMusicList();
       }
       await updateAssetDirs();
-    };
+    }
 
 
     return () => <NButton secondary onClick={del} loading={deleteLoading.value} type={deleteConfirm.value ? 'error' : 'default'}

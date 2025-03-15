@@ -20,9 +20,9 @@ export default defineComponent({
         {/* Only display after successfully detecting the game version */}
         {/* There is a problem with the button border z-index */}
         <NButton class={value.value < b15val.value ? "z-1" : ""} type={value.value < b15val.value ? 'success' : 'default'} ghost
-                 disabled={selectedADir.value === 'A000'} onClick={() => (value.value = 20000)}> Include in B35</NButton>
+                 disabled={selectedADir.value === 'A000'} onClick={() => (value.value = 20000)}>Include in B35</NButton>
         <NButton class={value.value >= b15val.value ? "z-1" : ""} type={value.value >= b15val.value ? 'success' : 'default'} ghost
-                 disabled={selectedADir.value === 'A000'} onClick={() => (value.value = 20000 + version.value!.gameVersion! * 100)}> Include in B15</NButton>
+                 disabled={selectedADir.value === 'A000'} onClick={() => (value.value = 20000 + version.value!.gameVersion! * 100)}>Include in B15</NButton>
       </>}
       <NPopover trigger="hover">
         {{

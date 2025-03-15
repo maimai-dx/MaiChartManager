@@ -65,11 +65,11 @@ export default defineComponent({
           </div>
         }
         <div class="lh-relaxed">
-          Adjusting sensitivity in Test mode is not linear<br />
-          Default sensitivity in Area A: 90, 80, 70, 60, 50, 40, 30, 26, 23, 20, 10<br />
-          Default sensitivity in other areas: 70, 60, 50, 40, 30, 20, 15, 10, 5, 1, 1<br />
-          In Test, a setting of 0 corresponds to the 40, 20 tier; -5 corresponds to 90, 70; +5 corresponds to 10, 1<br />
-          Test has a higher range of levels; the smaller the number here, the higher the sensitivity on official machines<br />
+          Adjusting sensitivity in Test mode is not linear<br/>
+          Default sensitivity in Area A: 90, 80, 70, 60, 50, 40, 30, 26, 23, 20, 10<br/>
+          Default sensitivity in other areas: 70, 60, 50, 40, 30, 20, 15, 10, 5, 1, 1<br/>
+          In Test, a setting of 0 corresponds to the 40, 20 tier; -5 corresponds to 90, 70; +5 corresponds to 10, 1<br/>
+          Test has a higher range of levels; the smaller the number here, the higher the sensitivity on official machines<br/>
           For ADX, the sensitivity is reversed, so the larger the number, the higher the sensitivity on ADX
         </div>
       </NFlex>

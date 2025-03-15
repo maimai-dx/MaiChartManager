@@ -10,7 +10,7 @@ export default defineComponent({
     const show = ref(false);
 
     return () => <NButton secondary onClick={() => show.value = true}>
-        Check Conflicts
+      Check Conflicts
 
       <NModal
         preset="card"

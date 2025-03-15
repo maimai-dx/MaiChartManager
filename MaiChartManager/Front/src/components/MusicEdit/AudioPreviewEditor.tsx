@@ -78,7 +78,7 @@ export default defineComponent({
         } else if (shift.value) {
           if (time <= region.value!.start) {
             message.warning("End time cannot be less than start time");
-            return;
+            return
           }
           region.value!.setOptions({end: time, start: region.value!.start})
         }
