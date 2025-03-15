@@ -57,7 +57,7 @@ const ConfigEntry = defineComponent({
           })()}
           {comments.shouldEnableOptions[props.entry.path!] && !props.entryState.value && <ProblemsDisplay problems={['This option needs to be enabled']}/>}
         </NFlex>
-        {comments.commentOverrides[props.entry.path!] || props.entry.attribute?.comment?.commentZh}
+        {comments.commentOverrides[props.entry.path!] || props.entry.attribute?.comment?.commentEn}
       </NFlex>
     </NFormItem>;
   },
@@ -82,7 +82,7 @@ const ConfigSection = defineComponent({
             <NSwitch v-model:value={props.sectionState.enabled}/>
             {comments.shouldEnableOptions[props.section.path!] && !props.sectionState.enabled && <ProblemsDisplay problems={['This option needs to be enabled']}/>}
           </NFlex>
-          {comments.commentOverrides[props.section.path!] || props.section.attribute?.comment?.commentZh}
+          {comments.commentOverrides[props.section.path!] || props.section.attribute?.comment?.commentEn}
         </NFlex>
       </NFormItem>}
       {props.sectionState.enabled && (
@@ -120,10 +120,10 @@ export default defineComponent({
       const s = search.value.toLowerCase();
       return props.config.sections?.filter(it =>
         it.path?.toLowerCase().includes(s) ||
-        it.attribute?.comment?.commentZh?.toLowerCase().includes(s) ||
         it.attribute?.comment?.commentEn?.toLowerCase().includes(s) ||
+        it.attribute?.comment?.commentZh?.toLowerCase().includes(s) ||
         it.entries?.some(entry => entry.name?.toLowerCase().includes(s) || entry.path?.toLowerCase().includes(s) ||
-          entry.attribute?.comment?.commentZh?.toLowerCase().includes(s) || entry.attribute?.comment?.commentEn?.toLowerCase().includes(s))
+          entry.attribute?.comment?.commentEn?.toLowerCase().includes(s) || entry.attribute?.comment?.commentZh?.toLowerCase().includes(s))
       );
     })
 
