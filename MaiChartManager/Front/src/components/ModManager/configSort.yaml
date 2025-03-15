@@ -27,7 +27,7 @@ FullyUnlockAndSkip:
   - Tweaks.TimeSaving.IWontTapOrSlideVigorously
   - UX.QuickEndPlay
 
-Beautify:
+Design:
   - GameSystem.Assets.Fonts
   - Fancy.CustomLogo
   - Fancy.CustomPlaceName
