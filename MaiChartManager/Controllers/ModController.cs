@@ -225,7 +225,7 @@ public class ModController(StaticSettings settings, ILogger<ModController> logge
         settings.ScanMusicList();
         var serializer = configInterface.CreateConfigSerializer(new IConfigSerializer.Options()
         {
-            Lang = "zh",
+            Lang = "en",
             IncludeBanner = true
         });
 

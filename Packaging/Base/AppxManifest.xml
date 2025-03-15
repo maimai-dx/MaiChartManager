@@ -23,7 +23,7 @@
       MinVersion="1.1.1.1" Optional="true"/>
   </Dependencies>
   <Resources>
-    <Resource Language="zh-cn" />
+    <Resource Language="en-us" />
   </Resources>
   <Applications>
     <Application Id="App" Executable="MaiChartManager.exe"
