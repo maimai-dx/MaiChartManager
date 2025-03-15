@@ -1,6 +1,6 @@
 # MaiChartManager-EN
 
-An eight-button rhythm game chart management tool
+An eight-button rhythm game chart management tool<br/>
 This fork provides [MaiChartManager](https://github.com/MewoLab/MaiChartManager) translated into English.
 
 ![image](https://github.com/user-attachments/assets/33dfa8b0-4a40-449b-8fbf-d1f901495402)
