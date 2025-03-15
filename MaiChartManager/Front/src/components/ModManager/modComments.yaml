@@ -14,7 +14,7 @@ sections:
 cheat:
   ticketUnlock: Unlock all possible map tickets in the game
   mapUnlock: Unlock all areas in the game, including those not in the current version (it won't help you complete them)
-  unlockUtage: You can enter the banquet hall without needing 10,000 points
+  unlockUtage: You can enter the Utage without needing 10,000 points
   debugFeature: Restore SDGA's auto-play (Home) and pause (Enter) keys
 
 ux:
@@ -62,7 +62,7 @@ ux:
     Hide the “TRACK X” text and the DX/standard chart display frame.
     Intended for chart verification recording.
   hideHanabi: |
-    Completely hide fireworks.
+    Completely hide Hanabi.
     Cannot be used together with HanabiFix.
   touchToButtonInput: |
     Map touch operations to physical buttons.
@@ -90,7 +90,7 @@ fix:
     Allow BreakSlide’s Critical judgments to flash like BreakTap.
     Precisely align the judgment display for curved Slides with the judgment line (originally slightly off).
   hanabiFix: |
-    Fix the size of fireworks in 1P mode.
+    Fix the size of Hanabi in 1P mode.
     Cannot be used together with HideHanabi.
   ignoreAimeServerError: |
     Prevent a gray screen caused by incorrectly detecting an AimeDB server error.
